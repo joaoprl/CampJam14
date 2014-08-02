@@ -62,10 +62,16 @@ public class Sprite {
     }
     
     public void draw(Graphics2D g2, int x, int y){
-        BufferedImage subimage = this.spriteSheet.getSubimage(currentFrame*SPRITE_WIDTH, 0, SPRITE_WIDTH, SPRITE_HEIGHT);
-        g2.drawImage(subimage, x, y, null);
-        
-        if(isAnimate)   Animate();
+        this.draw(g2, x, y, 1f, 1f);
+    }
+    public void draw(Graphics2D g2, int x, int y, float widthResize, float heightResize){
+    	if(widthResize != 0f && heightResize != 0f)
+    	{
+	        BufferedImage subimage = this.spriteSheet.getSubimage(currentFrame*SPRITE_WIDTH, 0, (int)(SPRITE_WIDTH * widthResize), (int)(SPRITE_HEIGHT * heightResize));
+	        g2.drawImage(subimage, x, y, null);        
+	        
+	        if(isAnimate)   Animate();
+    	}
     }
     
     public void stopAnimation(){

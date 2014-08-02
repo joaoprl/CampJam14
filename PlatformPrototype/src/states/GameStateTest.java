@@ -10,6 +10,7 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 import resources.ResourceManager;
+import code.TimeBar;
 
 /**
  *
@@ -17,19 +18,22 @@ import resources.ResourceManager;
  */
 public class GameStateTest extends GameState{
     private int oldMouseX, oldMouseY;
+    TimeBar timebar;
 
     @Override
-    public void init() {        
+    public void init() {
+    	timebar = new TimeBar(0, 0, 7);
     }
 
     @Override
-    public void update() {        
+    public void update(long wait) {  
+    	timebar.update(wait);    	
     }
 
     @Override
     public void draw(Graphics2D g) {
     	// Imprimir coisas na tela =D
-    	ResourceManager.getInstance().getSprite("tile_earth_default").draw(g, 0, 0);
+    	timebar.draw(g);
     }
 
     @Override

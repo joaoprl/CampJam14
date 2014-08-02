@@ -63,8 +63,8 @@ public class Panel extends JPanel implements Runnable, KeyListener, MouseListene
         
     }
     
-    public void update(){
-        gsm.update();
+    public void update(long wait){
+        gsm.update(wait);
     }
     
     public void draw(){
@@ -85,12 +85,12 @@ public class Panel extends JPanel implements Runnable, KeyListener, MouseListene
 
         long start;
         long elapsed;
-        long wait;
+        long wait = 0;
 
         while(running){
             start = System.nanoTime();
             
-            update();
+            update(wait);
             SwingUtilities.invokeLater(new Runnable(){
                 @Override
                 public void run(){

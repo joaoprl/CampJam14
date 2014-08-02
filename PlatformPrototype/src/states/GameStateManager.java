@@ -27,7 +27,7 @@ public class GameStateManager {
     private GameStateManager(){
         states = new ArrayList<GameState>();
         
-        states.add(new GameStateTest());        
+        states.add(new GameStateTest());      
         
         setState(TEST);
     }
@@ -46,8 +46,8 @@ public class GameStateManager {
         return currentState;
     }
     
-    public void update(){
-        states.get(currentState).update();
+    public void update(long wait){
+        states.get(currentState).update(wait);
     }
     
     public void draw(Graphics2D g){
