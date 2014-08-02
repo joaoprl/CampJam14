@@ -26,6 +26,7 @@ public class Animation {
         rm = ResourceManager.getInstance();
         
         animationDuration = duration;
+        currentTick = 0;
         
         // Initialize sprites
         for(String s: ids){
@@ -45,16 +46,22 @@ public class Animation {
     public void drawFrame(Graphics2D g){
         for(String s: spriteIds){
             int j = spritesTimeline.get(s).size()-1;
-            while(spritesTimeline.get(s).get(j).time > currentTick) j--;
+            while(spritesTimeline.get(s).get(j).time > currentTick) {
+                j-=1;
+            }
+            System.out.println(j);
             if(spritesTimeline.get(s).size()-1 == j)
                 sprites.get(s).draw(g, spritesTimeline.get(s).get(j).point.x, spritesTimeline.get(s).get(j).point.y);
             else{
-                long t = 1 - (spritesTimeline.get(s).get(j+1).time-spritesTimeline.get(s).get(j).time);
-                int dx = ((int)spritesTimeline.get(s).get(j+1).point.x-(int)spritesTimeline.get(s).get(j).point.x);
-                int dy = ((int)spritesTimeline.get(s).get(j+1).point.y-(int)spritesTimeline.get(s).get(j).point.y);
+                long t = (spritesTimeline.get(s).get(j+1).time-spritesTimeline.get(s).get(j).time);
+                float dx = (spritesTimeline.get(s).get(j+1).point.x-spritesTimeline.get(s).get(j).point.x);
+                float dy = (spritesTimeline.get(s).get(j+1).point.y-spritesTimeline.get(s).get(j).point.y);
+                float vx = (dx / t);
+                float vy = (dy / t);
+                float dt = currentTick - spritesTimeline.get(s).get(j).time;
                 sprites.get(s).draw(g, 
-                                    spritesTimeline.get(s).get(j).point.x + (int)(dx*t),
-                                    spritesTimeline.get(s).get(j).point.y + (int)(dy*t));
+                                    spritesTimeline.get(s).get(j).point.x + (int)(vx*dt),
+                                    spritesTimeline.get(s).get(j).point.y + (int)(vy*dt));
             }
         }
     }
@@ -64,18 +71,17 @@ public class Animation {
     }
     
     public boolean updateFrame(long delta){
+        currentTick += delta;
+        if(delta > animationDuration)
+            return true;
         return false;
-    }
-    
-    public void newPointInTime(String id, long time, Point point){
-        
     }
     
     private class PointInTime{
         public long time;
         public Point point;
         public PointInTime(long time, Point point){
-            this.time = time;
+            this.time = time*1000;
             this.point = point;
         }
     }
