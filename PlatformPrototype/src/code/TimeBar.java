@@ -8,7 +8,6 @@ import resources.Sprite;
 
 public class TimeBar {
 	Point position;
-	int width, height;
 	long miliseconds, waited;
 	float complete;
 	Sprite backgroundBar, timeBar;
@@ -40,7 +39,6 @@ public class TimeBar {
 				active = false;				
 			}
 			complete = (float)waited / (float)miliseconds;
-			if(complete > 1) complete = 1f;
 		}
 		
 	}
