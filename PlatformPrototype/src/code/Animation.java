@@ -45,11 +45,10 @@ public class Animation {
     
     public void drawFrame(Graphics2D g){
         for(String s: spriteIds){
-            int j = spritesTimeline.get(s).size()-1;
+            int j = spritesTimeline.get(s).size() - 1;
             while(spritesTimeline.get(s).get(j).time > currentTick) {
-                j-=1;
+                j -= 1;
             }
-            System.out.println(j);
             if(spritesTimeline.get(s).size()-1 == j)
                 sprites.get(s).draw(g, spritesTimeline.get(s).get(j).point.x, spritesTimeline.get(s).get(j).point.y);
             else{
@@ -82,7 +81,7 @@ public class Animation {
         public long time;
         public Point point;
         public PointInTime(long time, Point point){
-            this.time = time*1000;
+            this.time = time * 1000;
             this.point = point;
         }
     }

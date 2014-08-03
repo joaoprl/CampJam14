@@ -62,10 +62,10 @@ public class Sprite {
     }
     
     public void draw(Graphics2D g2, int x, int y){
-        this.draw(g2, x, y, 1f, 0f);
+        this.draw(g2, x, y, 1f, 1f);
     }
     public void draw(Graphics2D g2, int x, int y, float widthResize, float heightResize){
-    	this.draw(g2, x, y, widthResize, heightResize, 0f);
+    	this.draw(g2, x, y, widthResize, heightResize, 1f);
     }
     public void draw(Graphics2D g2, int x, int y, float opacity){
         this.draw(g2, x, y, 1f, 1f, opacity);
