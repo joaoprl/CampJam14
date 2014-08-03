@@ -76,10 +76,10 @@ public class ChoiceManager
    
     public void compareChoices()
     {
-        System.out.println("aeaeaeaeae");
-        PlayerManager.sharedManager().debug();
+        System.out.println("========================");
+        //PlayerManager.sharedManager().debug();
         //Endangered damage damage
-        if (nonGhostHelpers() == 0)
+        if (nonGhostHelpers() == 0 && scene != 1)
         {
             endangeredPlayer.kill();
         }
@@ -132,11 +132,7 @@ public class ChoiceManager
         //Helpers damage
         for (Player p : nonGhostHelpersArray())
         {
-            //TODO: check
-            if (!p.isGhost())
-            {
-                p.loseHP(1);
-            }
+            p.loseHP(1);
         }
         PlayerManager.sharedManager().debug();
     }
