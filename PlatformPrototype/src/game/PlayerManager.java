@@ -64,7 +64,7 @@ public class PlayerManager
     
     public Player getPlayerById(int playerID)
     {
-        return players.get(playerID).isDead() ? null : players.get(playerID);
+        return players.get(playerID);
     }
     
     public void debug()
