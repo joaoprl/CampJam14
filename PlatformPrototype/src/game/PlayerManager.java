@@ -33,12 +33,25 @@ public class PlayerManager
     
     public int alivePlayers()
     {
-        return players.size();
+        int playerCount = 0;
+        for (Player player : players)
+        {
+            playerCount += player.isDead() ? 0 : 1;
+        }
+        return playerCount;
     }
     
-    public Object[] getAlivePlayers()
+    public ArrayList<Player> getAlivePlayers()
     {
-        return players.toArray();
+        ArrayList<Player> playerArray = new ArrayList<Player>();
+        for (Player player : players)
+        {
+            if (!player.isDead())
+            {
+                playerArray.add(player);
+            }
+        }
+        return playerArray;
     }
     
     public void addStandardPlayers()
