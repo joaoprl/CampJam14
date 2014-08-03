@@ -23,11 +23,10 @@ public class ResourceManager {
         sprites = new HashMap<>();
         clips   = new HashMap<>();
         
-        loadSprite("assets\\earthIsoTile.png", 32, 32, "tile_earth_default");
         loadSprite("assets\\backgroundTimeBar.png", 100, 10, "background_time_bar");
         loadSprite("assets\\loadingTimeBar.png", 94, 8, "loading_time_bar");
-        loadSprite("assets\\background_menu.png", 1600, 1200, "background_menu");
-      
+        
+        loadSprite("Sheets\\background_menu.png", 1600, 1200, "background_menu");      
         loadSprite("Sheets\\Prologue\\prologue01.png", 1600, 600, "prologue01");
         loadSprite("Sheets\\Prologue\\prologue02.png", 1600, 600, "prologue02");
         loadSprite("Sheets\\Prologue\\prologue03.png", 1600, 600, "prologue03");
@@ -45,11 +44,18 @@ public class ResourceManager {
         loadSprite("assets\\personagemD.png", 300, 700, "personagemDThumbnail");
 
         loadSprite("assets\\ok.png", 60, 60, "ok");
+        
+//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\personagemA.png", 300, 700, "personagemAThumbnail");
+//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\personagemB.png", 300, 700, "personagemBThumbnail");
+//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\personagemC.png", 300, 700, "personagemCThumbnail");
+//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\personagemD.png", 300, 700, "personagemDThumbnail");
+
+//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\ok.png", 60, 60, "ok");
 
 //        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\backgroundTimeBar.png", 100, 10, "background_time_bar");
 //        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\loadingTimeBar.png", 94, 8, "loading_time_bar");
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\background_menu.png", 1600, 1200, "background_menu");
         
+//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\Sheets\\background_menu.png", 1600, 1200, "background_menu");        
 //        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\Sheets\\Prologue\\prologue01.png", 1600, 600, "prologue01");
 //        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\Sheets\\Prologue\\prologue02.png", 1600, 600, "prologue02");
 //        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\Sheets\\Prologue\\prologue03.png", 1600, 600, "prologue03");

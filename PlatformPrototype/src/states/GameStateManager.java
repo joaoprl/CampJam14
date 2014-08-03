@@ -31,7 +31,7 @@ public class GameStateManager {
 
         // states.add(new GameStateTest());
         states.add(new GameStateMenu());
-        // states.add(new GameStatePrepare());
+        states.add(new GameStatePrepare());
         states.add(new GameStateGame());
 
         states.add(new GameStateTest());      
