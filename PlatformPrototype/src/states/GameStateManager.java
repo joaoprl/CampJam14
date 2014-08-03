@@ -25,6 +25,8 @@ public class GameStateManager {
     public static final int GAMESTATE_PREPARE = 1;
     public static final int GAMESTATE_GAME = 2;
     
+    public int r;
+    
     // Singleton Methods
     private GameStateManager(){
         states = new ArrayList<GameState>();
@@ -36,6 +38,7 @@ public class GameStateManager {
      
         
         setState(GAMESTATE_MENU);
+        r = 0;
     }
     
     public static GameStateManager getInstance(){
@@ -61,6 +64,7 @@ public class GameStateManager {
     }
     
     public void keyPressed(int k){
+        System.out.println(r++);
         states.get(currentState).keyPressed(k);
     }
     

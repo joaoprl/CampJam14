@@ -3,6 +3,7 @@ package states;
 import code.Animation;
 import code.Interlude;
 import code.Scene;
+import code.TimeBar;
 import game.Choice;
 import game.ChoiceManager;
 import game.Player;
@@ -11,6 +12,8 @@ import java.applet.AudioClip;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
+import java.awt.image.ImageObserver;
+import main.Panel;
 
 /*
  * @author Peronio
@@ -47,6 +50,8 @@ public class GameStateGame extends GameState{
     private Scene gameScene;
     private Interlude gameInterlude;
     
+    private TimeBar timeBar;
+    
     private AudioClip[] scenesClips;
     
     @Override
@@ -63,13 +68,15 @@ public class GameStateGame extends GameState{
         //currentState = STATE_SCENE1;
         gameScene = new Scene(sceneAnimations(currentState));
         inScene = true;
+        
+        timeBar = new TimeBar(new Point(0,Panel.HEIGHT-100), 10);
     }
 
     @Override
     public void update(long wait) {
         if(inScene){
             gameScene.update(wait);
-            if(gameScene.isOver() && !inputEnable){
+            if(gameScene.isOver()){
                 if(currentState != STATE_EPILOGUE && currentState != STATE_PROLOGUE){
                     if(!inputEnable){
                         // Enabling input, next state is Interlude
@@ -77,7 +84,7 @@ public class GameStateGame extends GameState{
                         choiceTime = TIME_LIMIT;
                     } else {
                         choiceTime -= wait;
-                        // Update Timebar
+                        timeBar.update(wait);
                         if(choiceTime < 0)
                         {
                             choiceManager.timeIsUp();
@@ -99,9 +106,12 @@ public class GameStateGame extends GameState{
 
     @Override
     public void draw(Graphics2D g) {
-        if(inScene)
+        if(inScene){
             gameScene.draw(g);
-        else
+            if(gameScene.isOver()){
+                timeBar.draw(g);
+            }
+        } else
             gameInterlude.draw(g);
     }
 
@@ -195,6 +205,7 @@ public class GameStateGame extends GameState{
             currentState++;
             inScene = true;
             choiceManager = new ChoiceManager(currentState);
+            timeBar = new TimeBar(new Point(0,Panel.HEIGHT-100), 10);
             gameScene = new Scene(sceneAnimations(currentState));
         }
         

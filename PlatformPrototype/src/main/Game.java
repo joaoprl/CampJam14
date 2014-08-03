@@ -35,7 +35,7 @@ public class Game {
         gameFrame.pack();
         gameFrame.setLocationRelativeTo(null);
         gameFrame.setVisible(true);
-        gameFrame.setSize(1024, 768);
+        //gameFrame.setSize(1024, 768);
         
     }
 }
