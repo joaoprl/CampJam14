@@ -32,16 +32,17 @@ public class PlayerGui
         playerCThumbnail = rm.getSprite("C_2");
         playerDThumbnail = rm.getSprite("D_1");
         
-        rszx = (float)(Panel.WIDTH/4)/playerAThumbnail.SPRITE_WIDTH;
-        rszy = (float)(Panel.HEIGHT)/playerAThumbnail.SPRITE_HEIGHT;
+        rszx = (float)(Panel.WIDTH/4)/playerAThumbnail.SPRITE_WIDTH/3;
+        rszy = (float)(Panel.HEIGHT)/playerAThumbnail.SPRITE_HEIGHT/5;
     }
     
     public void draw(Graphics2D g)
     {
-        playerAThumbnail.draw(g, 0, 0, rszx, rszy);
-        playerBThumbnail.draw(g, Panel.WIDTH/4, 0, rszx, rszy);
-        playerCThumbnail.draw(g, Panel.WIDTH/2, 0, rszx, rszy);
-        playerDThumbnail.draw(g, 3*Panel.WIDTH/4, 0, rszx, rszy);
+        //playerAThumbnail.draw()
+        playerAThumbnail.draw(g, 2*Panel.WIDTH/6 - playerAThumbnail.SPRITE_WIDTH/3 , Panel.HEIGHT - playerAThumbnail.SPRITE_HEIGHT/4, rszx, rszy);
+        playerBThumbnail.draw(g, 3*Panel.WIDTH/6 - playerAThumbnail.SPRITE_WIDTH/3, Panel.HEIGHT - playerAThumbnail.SPRITE_HEIGHT/4, rszx, rszy);
+        playerCThumbnail.draw(g, 4*Panel.WIDTH/6 - playerAThumbnail.SPRITE_WIDTH/3, Panel.HEIGHT - playerAThumbnail.SPRITE_HEIGHT/4, rszx, rszy);
+        playerDThumbnail.draw(g, 5*Panel.WIDTH/6 - playerAThumbnail.SPRITE_WIDTH/3, Panel.HEIGHT - playerAThumbnail.SPRITE_HEIGHT/4, rszx, rszy);
         
     }
     
