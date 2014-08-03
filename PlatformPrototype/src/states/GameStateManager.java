@@ -33,8 +33,7 @@ public class GameStateManager {
         states.add(new GameStateMenu());
         states.add(new GameStatePrepare());
         states.add(new GameStateGame());
-
-        states.add(new GameStateTest());      
+     
         
         setState(GAMESTATE_MENU);
     }

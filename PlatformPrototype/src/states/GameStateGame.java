@@ -53,9 +53,7 @@ public class GameStateGame extends GameState{
     public void init() {
         // Initialize players
         PlayerManager.sharedManager().addStandardPlayers();
-        choiceManager = new ChoiceManager(1);
-        //TODO:change scenes!!!
-        
+
         // Load musics!
         // lel
         
@@ -92,13 +90,19 @@ public class GameStateGame extends GameState{
 
             }
         } else {
-            // interlude.update()
+            gameInterlude.update(wait);
+            if(gameInterlude.isOver()){
+                nextState();
+            }
         }
     }
 
     @Override
     public void draw(Graphics2D g) {
-        gameScene.draw(g);
+        if(inScene)
+            gameScene.draw(g);
+        else
+            gameInterlude.draw(g);
     }
 
     @Override
@@ -170,6 +174,7 @@ public class GameStateGame extends GameState{
             // Scene 1
             inScene = true;
             currentState = STATE_SCENE1;
+            choiceManager = new ChoiceManager(1);
             gameScene = new Scene(sceneAnimations(currentState));
             return;
         } else if(inScene && currentState == STATE_SCENE5){
@@ -181,11 +186,15 @@ public class GameStateGame extends GameState{
         } else if(inScene){
             // Interlude
             inScene = false;
+            String[] strs = new String[1];
+            strs[0] = "hu3";
+            gameInterlude = new Interlude(strs, new Point(10,10), 2f, 5);
             
         } else if(!inScene){
             // Next state
             currentState++;
             inScene = true;
+            choiceManager = new ChoiceManager(currentState);
             gameScene = new Scene(sceneAnimations(currentState));
         }
         
@@ -232,27 +241,27 @@ public class GameStateGame extends GameState{
                 break;
             case STATE_SCENE1:
                 newAnimation = new Animation[1];
-                anime = newAnimation[0] = new Animation(10, resizeX, resizeY, "scene1_1");
+                anime = newAnimation[0] = new Animation(3, resizeX, resizeY, "scene1_1");
                 anime.addPointInTime("scene1_1", 0, point);
                 break;
             case STATE_SCENE2:
                 newAnimation = new Animation[1];
-                anime = newAnimation[0] = new Animation(10, resizeX, resizeY, "scene2_1");
+                anime = newAnimation[0] = new Animation(3, resizeX, resizeY, "scene2_1");
                 anime.addPointInTime("scene2_1", 0, point);
                 break;
             case STATE_SCENE3:
                 newAnimation = new Animation[1];
-                anime = newAnimation[0] = new Animation(10, resizeX, resizeY, "scene3_1");
+                anime = newAnimation[0] = new Animation(3, resizeX, resizeY, "scene3_1");
                 anime.addPointInTime("scene3_1", 0, point);
                 break;
             case STATE_SCENE4:
                 newAnimation = new Animation[1];
-                anime = newAnimation[0] = new Animation(10, resizeX, resizeY, "scene4_1");
+                anime = newAnimation[0] = new Animation(3, resizeX, resizeY, "scene4_1");
                 anime.addPointInTime("scene4_1", 0, point);
                 break;
             case STATE_SCENE5:
                 newAnimation = new Animation[1];
-                anime = newAnimation[0] = new Animation(10, resizeX, resizeY, "scene5_1");
+                anime = newAnimation[0] = new Animation(3, resizeX, resizeY, "scene5_1");
                 anime.addPointInTime("scene5_1", 0, point);
                 break;
             case STATE_EPILOGUE:

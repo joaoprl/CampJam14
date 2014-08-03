@@ -18,23 +18,25 @@ import resources.Sprite;
 
 public class Interlude {
 
-	Font font;
-	Sprite overlay;
-	float stringOpacity;
-	Boolean fadeOut;
-	int stringCounter;
+	private Font font;
+	private Sprite overlay;
+	private float stringOpacity;
+	private Boolean fadeOut;
+	private int stringCounter;
 
-	String[] strings;
-	Point position;
-	long fadeTime;
-	long totalTime, waited;
-	int nextState;		
+	private String[] strings;
+	private Point position;
+	private long fadeTime;
+	private long totalTime, waited;
+	private int nextState;		
+        
+        private boolean isOver;
 
 	public Interlude(String[] strings, Point position, float fadeTime,
-			int time, int nextState) {
+			int time) {
 		try {
                     //TODO: FIX FONT PATH
-			font = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\LHANDW.TTF"));
+			font = Font.createFont(Font.TRUETYPE_FONT, new File("assets\\LHANDW.TTF"));
 			font = font.deriveFont(25f);
 		} catch (NullPointerException | FontFormatException | IOException e) {
 			System.out.println(e.getMessage());
@@ -49,7 +51,6 @@ public class Interlude {
 		this.fadeTime = (long) fadeTime * 1000;
 		this.totalTime = time * 1000;
 		this.waited = 0l;
-		this.nextState = nextState;
 	}
 
 	public void update(long wait) {
@@ -72,7 +73,7 @@ public class Interlude {
 		if (stringOpacity > 1)
 			stringOpacity = 1f;
 		
-		// if(waited >= totalTime) this.end();
+		if(waited >= totalTime) isOver = true;
 	}
 
 	public void draw(Graphics2D g) {
@@ -91,9 +92,9 @@ public class Interlude {
 			y += (int) font.getStringBounds(strings[i], new FontRenderContext(new AffineTransform(), false, false)).getHeight();
 		}
 	}
-
-	private void end() {
-		GameStateManager.getInstance().setState(nextState);
-	}
+        
+        public boolean isOver(){
+            return isOver;
+        }
 
 }
