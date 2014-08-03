@@ -1,4 +1,4 @@
-﻿package resources;
+package resources;
 
 /**
  *
@@ -11,6 +11,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
+import resources.Sprite;
 
 public class ResourceManager {
     private static final ResourceManager ResourceManagerSingleton = new ResourceManager();
