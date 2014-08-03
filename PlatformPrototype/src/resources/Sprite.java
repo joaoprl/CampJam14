@@ -65,7 +65,7 @@ public class Sprite {
         this.draw(g2, x, y, 1f, 1f);
     }
     public void draw(Graphics2D g2, int x, int y, float widthResize, float heightResize){
-    	this.draw(g2, x, y, widthResize, heightResize, 1f);
+    	g2.drawImage(spriteSheet, x, y, (int)(SPRITE_WIDTH * widthResize), (int)(SPRITE_HEIGHT * heightResize), null);
     }
     public void draw(Graphics2D g2, int x, int y, float opacity){
         this.draw(g2, x, y, 1f, 1f, opacity);
@@ -79,7 +79,6 @@ public class Sprite {
 	        if(isAnimate)   Animate();
     	}
     }
-    
     
     public void stopAnimation(){
         if(isAnimate)   isAnimate = false;

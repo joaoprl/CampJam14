@@ -15,6 +15,8 @@ public class GameStateMenu extends GameState{
     GameStateManager gsm;
     
     Sprite background;
+    float rszx;
+    float rszy;
     
     @Override
     public void init() {
@@ -23,6 +25,8 @@ public class GameStateMenu extends GameState{
         
         // Intialize background
         background = rm.getSprite("background_menu");
+        rszx = (float)Panel.WIDTH/background.SPRITE_WIDTH;
+        rszy = (float)Panel.HEIGHT/background.SPRITE_HEIGHT;
     }
 
     @Override
@@ -32,13 +36,13 @@ public class GameStateMenu extends GameState{
     @Override
     public void draw(Graphics2D g) {
         // Draw background
-        background.draw(g, 0, 0, (float)Panel.WIDTH/background.SPRITE_WIDTH, (float)Panel.HEIGHT/background.SPRITE_HEIGHT);
+        background.draw(g, 0, 0, rszx, rszy);
     }
 
     @Override
     public void keyPressed(int k) {
         if(k == 65 || k == 83 || k == 68 || k == 70 || k == 71 || k == 72 || k == 74 || k == 75 || k == 76){
-            gsm.setState(1);
+            gsm.setState(2);
         }
     }
 
