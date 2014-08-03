@@ -27,7 +27,9 @@ public class GameStateManager {
     private GameStateManager(){
         states = new ArrayList<GameState>();
         
-        states.add(new GameStateTest());
+        states.add(new GameStateTest());      
+        
+        setState(TEST);
     }
     
     public static GameStateManager getInstance(){

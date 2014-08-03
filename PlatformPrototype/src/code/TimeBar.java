@@ -13,6 +13,11 @@ public class TimeBar {
 	Sprite backgroundBar, timeBar;
 	Boolean active;
 	
+	/**
+	 * Constrói uma barra de tempo
+	 * @param position Posição inicial da barra de tempo
+	 * @param seconds Tempo da barra
+	 */
 	public TimeBar(Point position, float seconds)
 	{
 		this.position = position;
@@ -23,11 +28,21 @@ public class TimeBar {
 		timeBar = ResourceManager.getInstance().getSprite("loading_time_bar");
 		active = true;
 	}
+	/**
+	 * Constrói uma barra de tempo
+	 * @param x Posição x incial da barra de tempo
+	 * @param y Posição y incial da barra de tempo
+	 * @param seconds Tempo da barra
+	 */
 	public TimeBar(int x, int y, int seconds)
 	{
 		this(new Point(x, y), seconds);
 	}
 	
+	/**
+	 * Update da barra de tempo
+	 * @param wait Tempo decorrido desde a última atualização
+	 */
 	public void update(long wait)
 	{
 		if(active)
@@ -43,6 +58,9 @@ public class TimeBar {
 		
 	}
 	
+	/**
+	 * @param g Imprime a barra de fundo e a barra de tempo
+	 */
 	public void draw(Graphics2D g)
 	{
 		backgroundBar.draw(g, position.x, position.y);
@@ -50,6 +68,9 @@ public class TimeBar {
 				position.y + (backgroundBar.SPRITE_HEIGHT - timeBar.SPRITE_HEIGHT) / 2, 1f - complete, 1f);
 	}
 	
+	/**
+	 * @return true se o tempo se esgotou; false caso contrário
+	 */
 	public Boolean isOver()
 	{
 		return !active;
