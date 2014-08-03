@@ -27,12 +27,15 @@ public class GameStateManager {
     // Singleton Methods
     private GameStateManager(){
         states = new ArrayList<GameState>();
-        
+
         states.add(new GameStateTest());
         states.add(new GameStateMenu());
         states.add(new GameStatePrepare());
         states.add(new GameStateGame());
+
+        states.add(new GameStateTest());      
         
+        setState(TEST);
     }
     
     public static GameStateManager getInstance(){

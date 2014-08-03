@@ -60,8 +60,10 @@ public class Panel extends JPanel implements Runnable, KeyListener, MouseListene
         image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
         g = (Graphics2D) image.getGraphics();
         gsm = GameStateManager.getInstance();
+
         // Inititate gsm!
         gsm.setState(1);
+
         
     }
     

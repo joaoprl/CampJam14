@@ -53,7 +53,7 @@ public class Sprite {
                 }
             } else {
                 customAnimationFrame++;
-                if(customAnimationFrame > customAnimations.get(currentCustomAnimation).length-1){
+                if(customAnimationFrame > customAnimations.get(currentCustomAnimation).length - 1){
                     customAnimationFrame = 0;
                 }
                 currentFrame = customAnimations.get(currentCustomAnimation)[customAnimationFrame];
@@ -65,14 +65,21 @@ public class Sprite {
         this.draw(g2, x, y, 1f, 1f);
     }
     public void draw(Graphics2D g2, int x, int y, float widthResize, float heightResize){
+    	this.draw(g2, x, y, widthResize, heightResize, 1f);
+    }
+    public void draw(Graphics2D g2, int x, int y, float opacity){
+        this.draw(g2, x, y, 1f, 1f, opacity);
+    }
+    public void draw(Graphics2D g2, int x, int y, float widthResize, float heightResize, float opacity){
     	if((int)(SPRITE_WIDTH * widthResize) > 0 && (int)(SPRITE_HEIGHT * heightResize) > 0)
     	{
-	        BufferedImage subimage = this.spriteSheet.getSubimage(currentFrame*SPRITE_WIDTH, 0, (int)(SPRITE_WIDTH * widthResize), (int)(SPRITE_HEIGHT * heightResize));
-	        g2.drawImage(subimage, x, y, null);        
+	        BufferedImage subimage = this.spriteSheet.getSubimage(currentFrame*SPRITE_WIDTH, 0, (int)(SPRITE_WIDTH * widthResize), (int)(SPRITE_HEIGHT * heightResize));        
+	        g2.drawImage(subimage, x, y, new Color(0f,0f,0f,opacity), null);
 	        
 	        if(isAnimate)   Animate();
     	}
     }
+    
     
     public void stopAnimation(){
         if(isAnimate)   isAnimate = false;
