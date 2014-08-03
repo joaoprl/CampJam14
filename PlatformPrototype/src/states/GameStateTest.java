@@ -11,39 +11,49 @@ import code.TimeBar;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
-
 import resources.ResourceManager;
+import code.Interlude;
 
 /**
  *
  * @author Peronio
  */
 public class GameStateTest extends GameState{
-    private int oldMouseX, oldMouseY;
+    // private int oldMouseX, oldMouseY;
+    Interlude interlude;
     TimeBar timebar;
-
     Animation animaBarney;
+    
     @Override
     public void init() {
-    	timebar = new TimeBar(0, 0, 7);
-        animaBarney = new Animation(10, "background_time_bar");
-        animaBarney.addPointInTime("background_time_bar", 0, new Point(2, 2));
-        animaBarney.addPointInTime("background_time_bar", 4, new Point(100,100));
-        animaBarney.addPointInTime("background_time_bar", 6, new Point(400, -50));
-        animaBarney.addPointInTime("background_time_bar", 7, new Point(0, 1000));
+	    timebar = new TimeBar(0, 0, 7);
+	    
+	    animaBarney = new Animation(10, "background_time_bar");
+	    animaBarney.addPointInTime("background_time_bar", 0, new Point(2, 2));
+	    animaBarney.addPointInTime("background_time_bar", 4, new Point(100,100));
+	    animaBarney.addPointInTime("background_time_bar", 6, new Point(400, -50));
+	    animaBarney.addPointInTime("background_time_bar", 7, new Point(0, 1000));
+	    
+    	 String[] strings = new String[3];
+    	 strings[0] = "lol";
+    	 strings[1] = "abc";
+    	 strings[2] = "123";
+    	 
+    	 interlude = new Interlude(strings, new Point(100,100), 2, 10, 0);
     }
 
     @Override
     public void update(long wait) {  
     	timebar.update(wait);
-        animaBarney.updateFrame(wait);
+    	animaBarney.updateFrame(wait);    
+    	interlude.update(wait);
     }
 
     @Override
     public void draw(Graphics2D g) {
-    	// Imprimir coisas na tela =D
     	timebar.draw(g);
-        animaBarney.drawFrame(g);
+    	animaBarney.drawFrame(g);   
+    	interlude.draw(g);
     }
 
     @Override
@@ -70,3 +80,4 @@ public class GameStateTest extends GameState{
     }
     
 }
+

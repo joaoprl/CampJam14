@@ -31,7 +31,6 @@ public class Game {
         gameFrame = new JFrame("Game Prototype");
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.setResizable(false);
-        
         gameFrame.setContentPane(new Panel());
         gameFrame.pack();
         gameFrame.setLocationRelativeTo(null);

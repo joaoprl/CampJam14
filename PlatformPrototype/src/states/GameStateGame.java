@@ -3,6 +3,7 @@ package states;
 import code.Animation;
 import code.Interlude;
 import code.Scene;
+import java.applet.AudioClip;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
@@ -41,6 +42,8 @@ public class GameStateGame extends GameState{
     private Scene gameScene;
     private Interlude gameInterlude;
     
+    private AudioClip[] scenesClips;
+    
     @Override
     public void init() {
         // Initialize player health
@@ -54,6 +57,9 @@ public class GameStateGame extends GameState{
         for(int i: players_choices){
             i = PLAYER_CHOICE_ABSTAIN;
         }
+        
+        // Load musics!
+        // lel
         
         // First state: prologue!
         inputEnable = false;
@@ -99,7 +105,7 @@ public class GameStateGame extends GameState{
 
     @Override
     public void keyPressed(int k) {
-        
+        // chesco gay rs
     }
 
     @Override
