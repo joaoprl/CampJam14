@@ -71,7 +71,7 @@ public class GameStateGame extends GameState{
         gameScene = new Scene(sceneAnimations(currentState));
         inScene = true;
         
-        timeBar = new TimeBar(new Point(0,Panel.HEIGHT-100), 10);
+        timeBar = new TimeBar(new Point(Panel.WIDTH*4/5,Panel.HEIGHT*1/5), 10);
         pg = new PlayerGui();
     }
 
@@ -227,7 +227,7 @@ public class GameStateGame extends GameState{
             currentState++;
             inScene = true;
             choiceManager = new ChoiceManager(currentState);
-            timeBar = new TimeBar(new Point(0,Panel.HEIGHT-100), 10);
+            timeBar = new TimeBar(new Point(Panel.WIDTH*4/5,Panel.HEIGHT*1/5), 10);
             gameScene = new Scene(sceneAnimations(currentState));
         }
         
