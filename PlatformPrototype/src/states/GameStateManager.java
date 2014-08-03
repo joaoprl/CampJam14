@@ -10,6 +10,8 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import code.Audio;
+
 /**
  *
  * @author Peronio
@@ -57,6 +59,8 @@ public class GameStateManager {
     
     public void update(long wait){
         states.get(currentState).update(wait);
+        
+        Audio.update(wait);
     }
     
     public void draw(Graphics2D g){

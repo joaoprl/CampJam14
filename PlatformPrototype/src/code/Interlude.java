@@ -32,11 +32,11 @@ public class Interlude {
         
         private boolean isOver;
 
-	public Interlude(String[] strings, Point position, float fadeTime,
-			int time) {
+	public Interlude(String[] strings, Point position, float fadeTime, int time) {
 		try {
-                    //TODO: FIX FONT PATH
-			font = Font.createFont(Font.TRUETYPE_FONT, new File("assets\\eurosti.ttf"));
+			String path;
+			path = "C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\";
+			font = Font.createFont(Font.TRUETYPE_FONT, new File(path + "assets\\eurosti.ttf"));
 			font = font.deriveFont(25f);
 		} catch (NullPointerException | FontFormatException | IOException e) {
 			System.out.println(e.getMessage());
@@ -84,7 +84,7 @@ public class Interlude {
 
 		for (int i = 0; i < strings.length && i <= stringCounter; i++) {
 			if(stringCounter == i || fadeOut) g.setComposite(AlphaComposite.SrcOver.derive(stringOpacity));
-			
+			g.setColor(Color.white);
 			g.drawString(strings[i], position.x, position.y + y);
 			
 			g.setComposite(AlphaComposite.SrcOver.derive(1f));

@@ -1,4 +1,4 @@
-package states;
+﻿package states;
 
 import code.Animation;
 import code.Interlude;
@@ -99,7 +99,7 @@ public class GameStateGame extends GameState{
                 }
 
             }
-        } else {
+        } else {        	
             gameInterlude.update(wait);
             if(gameInterlude.isOver()){
                 nextState();
@@ -218,9 +218,12 @@ public class GameStateGame extends GameState{
         } else if(inScene){
             // Interlude
             inScene = false;
-            String[] strs = new String[1];
-            strs[0] = "hu3";
-            gameInterlude = new Interlude(strs, new Point(10,10), 2f, 5);
+            String[] strs = new String[4];
+            strs[0] = "The survivors have escaped!";
+            strs[1] = "Perônio";
+            strs[2] = "muito";
+            strs[3] = "gay";
+            gameInterlude = new Interlude(strs, new Point(Panel.WIDTH / 10, (int)(Panel.HEIGHT * 0.4)), 3f, 15);
             
         } else if(!inScene){
             // Next state
@@ -298,6 +301,7 @@ public class GameStateGame extends GameState{
                 anime.addPointInTime("scene5_1", 0, point);
                 break;
             case STATE_EPILOGUE:
+            	
                 break;
             default:
                 break;

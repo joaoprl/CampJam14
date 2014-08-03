@@ -24,62 +24,42 @@ public class ResourceManager {
         sprites = new HashMap<>();
         clips   = new HashMap<>();
         
-        loadSprite("assets\\backgroundTimeBar.png", 100, 10, "background_time_bar");
-        loadSprite("assets\\loadingTimeBar.png", 94, 8, "loading_time_bar");
+        String path = null;
+        path = "C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\";
         
-        loadSprite("Sheets\\background_menu.png", 1600, 1200, "background_menu");      
-        loadSprite("Sheets\\Prologue\\prologue01.png", 1600, 600, "prologue01");
-        loadSprite("Sheets\\Prologue\\prologue02.png", 1600, 600, "prologue02");
-        loadSprite("Sheets\\Prologue\\prologue03.png", 1600, 600, "prologue03");
-        loadSprite("Sheets\\Prologue\\prologue04.png", 1600, 600, "prologue04");
-        loadSprite("Sheets\\Prologue\\prologue05.png", 1600, 600, "prologue05");
-        loadSprite("Sheets\\Prologue\\prologue06.png", 1600, 600, "prologue06");
-        loadSprite("Sheets\\Prologue\\prologue07.png", 1600, 600, "prologue07");
-        loadSprite("Sheets\\Prologue\\prologue08.png", 1600, 600, "prologue08");
-        loadSprite("Sheets\\Prologue\\prologue09.png", 1600, 600, "prologue09");
-        loadSprite("Sheets\\Prologue\\prologue10.png", 1600, 600, "prologue10");
+        loadSprite(path + "assets\\backgroundTimeBar.png", 100, 10, "background_time_bar");
+        loadSprite(path + "assets\\loadingTimeBar.png", 94, 8, "loading_time_bar");
+        
+        loadSprite(path + "Sheets\\background_menu.png", 1600, 1200, "background_menu");      
+        loadSprite(path + "Sheets\\Prologue\\prologue01.png", 1600, 600, "prologue01");
+        loadSprite(path + "Sheets\\Prologue\\prologue02.png", 1600, 600, "prologue02");
+        loadSprite(path + "Sheets\\Prologue\\prologue03.png", 1600, 600, "prologue03");
+        loadSprite(path + "Sheets\\Prologue\\prologue04.png", 1600, 600, "prologue04");
+        loadSprite(path + "Sheets\\Prologue\\prologue05.png", 1600, 600, "prologue05");
+        loadSprite(path + "Sheets\\Prologue\\prologue06.png", 1600, 600, "prologue06");
+        loadSprite(path + "Sheets\\Prologue\\prologue07.png", 1600, 600, "prologue07");
+        loadSprite(path + "Sheets\\Prologue\\prologue08.png", 1600, 600, "prologue08");
+        loadSprite(path + "Sheets\\Prologue\\prologue09.png", 1600, 600, "prologue09");
+        loadSprite(path + "Sheets\\Prologue\\prologue10.png", 1600, 600, "prologue10");
 
-        loadSprite("assets\\personagemA.png", 300, 700, "personagemAThumbnail");
-        loadSprite("assets\\personagemB.png", 300, 700, "personagemBThumbnail");
-        loadSprite("assets\\personagemC.png", 300, 700, "personagemCThumbnail");
-        loadSprite("assets\\personagemD.png", 300, 700, "personagemDThumbnail");
+        loadSprite(path + "assets\\personagemA.png", 300, 700, "personagemAThumbnail");
+        loadSprite(path + "assets\\personagemB.png", 300, 700, "personagemBThumbnail");
+        loadSprite(path + "assets\\personagemC.png", 300, 700, "personagemCThumbnail");
+        loadSprite(path + "assets\\personagemD.png", 300, 700, "personagemDThumbnail");
 
-        loadSprite("Sheets\\scenes\\Scene1_1.png", 1600,600,"scene1_1");
-        loadSprite("Sheets\\scenes\\Scene2_1.png", 1600,600,"scene2_1");
-        loadSprite("Sheets\\scenes\\Scene3_1.png", 1600,600,"scene3_1");
-        loadSprite("Sheets\\scenes\\Scene4_1.png", 1600,600,"scene4_1");
-        loadSprite("Sheets\\scenes\\Scene5_1.png", 1600,600,"scene5_1");
+        loadSprite(path + "Sheets\\scenes\\Scene1_1.png", 1600,600,"scene1_1");
+        loadSprite(path + "Sheets\\scenes\\Scene2_1.png", 1600,600,"scene2_1");
+        loadSprite(path + "Sheets\\scenes\\Scene3_1.png", 1600,600,"scene3_1");
+        loadSprite(path + "Sheets\\scenes\\Scene4_1.png", 1600,600,"scene4_1");
+        loadSprite(path + "Sheets\\scenes\\Scene5_1.png", 1600,600,"scene5_1");
         
-        loadSprite("assets\\A_3.png", 400, 600, "A_3");
-        loadSprite("assets\\B_4.png", 400, 600, "B_4");
-        loadSprite("assets\\C_2.png", 400, 600, "C_2");
-        loadSprite("assets\\D_1.png", 400, 600, "D_1");
+        loadSprite(path + "assets\\A_3.png", 400, 600, "A_3");
+        loadSprite(path + "assets\\B_4.png", 400, 600, "B_4");
+        loadSprite(path + "assets\\C_2.png", 400, 600, "C_2");
+        loadSprite(path + "assets\\D_1.png", 400, 600, "D_1");
         
         
-        loadSprite("assets\\ok.png", 60, 60, "ok");
-        
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\personagemA.png", 300, 700, "personagemAThumbnail");
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\personagemB.png", 300, 700, "personagemBThumbnail");
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\personagemC.png", 300, 700, "personagemCThumbnail");
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\personagemD.png", 300, 700, "personagemDThumbnail");
-
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\ok.png", 60, 60, "ok");
-
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\backgroundTimeBar.png", 100, 10, "background_time_bar");
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\loadingTimeBar.png", 94, 8, "loading_time_bar");
-        
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\Sheets\\background_menu.png", 1600, 1200, "background_menu");        
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\Sheets\\Prologue\\prologue01.png", 1600, 600, "prologue01");
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\Sheets\\Prologue\\prologue02.png", 1600, 600, "prologue02");
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\Sheets\\Prologue\\prologue03.png", 1600, 600, "prologue03");
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\Sheets\\Prologue\\prologue04.png", 1600, 600, "prologue04");
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\Sheets\\Prologue\\prologue05.png", 1600, 600, "prologue05");
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\Sheets\\Prologue\\prologue06.png", 1600, 600, "prologue06");
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\Sheets\\Prologue\\prologue07.png", 1600, 600, "prologue07");
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\Sheets\\Prologue\\prologue08.png", 1600, 600, "prologue08");
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\Sheets\\Prologue\\prologue09.png", 1600, 600, "prologue09");
-//        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\Sheets\\Prologue\\prologue10.png", 1600, 600, "prologue10");
-
+        loadSprite(path + "assets\\ok.png", 60, 60, "ok");
     }
     
     public static ResourceManager getInstance(){
