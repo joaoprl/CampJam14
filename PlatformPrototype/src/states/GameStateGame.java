@@ -105,7 +105,14 @@ public class GameStateGame extends GameState{
 
     @Override
     public void keyPressed(int k) {
-        // chesco gay rs
+        // Se jogo esta em cena e tempo de animacao jah acabou (tempo de decisao dos jogadores)
+        if(inScene && gameScene.isOver()){
+            // Implementa decisoes
+            // if (falta algum jogador tomar decisao){
+            //} else {
+            //  nextState();
+            //}
+        }
     }
 
     @Override
@@ -134,10 +141,27 @@ public class GameStateGame extends GameState{
     }
     
     private void nextState(){
-        if(inScene){
-            // new Interlude
-        } else {
+        if(inScene && currentState == STATE_PROLOGUE){
+            // Scene 1
+            inScene = true;
+            currentState = STATE_SCENE1;
+            gameScene = new Scene(sceneAnimations(currentState));
+            return;
+        } else if(inScene && currentState == STATE_SCENE5){
+            // Epilogue
+            inScene = true;
+            currentState = STATE_EPILOGUE;
+            gameScene = new Scene(sceneAnimations(currentState));
+            return;
+        } else if(inScene){
+            // Interlude
+            inScene = false;
             
+        } else if(!inScene){
+            // Next state
+            currentState++;
+            inScene = true;
+            gameScene = new Scene(sceneAnimations(currentState));
         }
         
     }
