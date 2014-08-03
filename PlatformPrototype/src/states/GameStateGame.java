@@ -2,6 +2,7 @@ package states;
 
 import code.Animation;
 import code.Interlude;
+import code.PlayerGui;
 import code.Scene;
 import code.TimeBar;
 import game.Choice;
@@ -13,6 +14,7 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.image.ImageObserver;
+import java.util.ArrayList;
 import main.Panel;
 
 /*
@@ -48,10 +50,10 @@ public class GameStateGame extends GameState{
     private int currentState;
     private boolean inScene;
     private Scene gameScene;
-    private Interlude gameInterlude;
-    
+    private Interlude gameInterlude;    
     private TimeBar timeBar;
-    
+    private PlayerGui pg;
+
     private AudioClip[] scenesClips;
     
     @Override
@@ -70,6 +72,7 @@ public class GameStateGame extends GameState{
         inScene = true;
         
         timeBar = new TimeBar(new Point(0,Panel.HEIGHT-100), 10);
+        pg = new PlayerGui();
     }
 
     @Override
@@ -106,13 +109,23 @@ public class GameStateGame extends GameState{
 
     @Override
     public void draw(Graphics2D g) {
-        if(inScene){
+
+        if(inScene)
+        {
             gameScene.draw(g);
-            if(gameScene.isOver()){
+            if (currentState != STATE_PROLOGUE)
+            {
+                pg.draw(g);
+            }
+            if(gameScene.isOver())
+            {
                 timeBar.draw(g);
             }
-        } else
+        }
+        else
+        {
             gameInterlude.draw(g);
+        }
     }
 
     @Override
@@ -122,21 +135,27 @@ public class GameStateGame extends GameState{
         if(inScene && gameScene.isOver())
         {
             //System.out.println("oooi");
+            ArrayList<Player> helpingPlayers = new ArrayList<Player>();
+            
             Choice choice = null;
             if(k == 65 || k == 83)
             {
+                if (k == 65) helpingPlayers.add(PlayerManager.sharedManager().getPlayerById(0));
                 choice = new Choice(PlayerManager.sharedManager().getPlayerById(0), k == 65);
             }
             if(k == 68 || k == 70)
             {
+                if (k == 68) helpingPlayers.add(PlayerManager.sharedManager().getPlayerById(1));
                 choice = new Choice(PlayerManager.sharedManager().getPlayerById(1), k == 68);
             }
             if(k == 71 || k == 72)
             {
+                if (k == 71) helpingPlayers.add(PlayerManager.sharedManager().getPlayerById(2));
                 choice = new Choice(PlayerManager.sharedManager().getPlayerById(2), k == 71);
             }
             if(k == 74 || k == 75)
             {
+                if (k == 74) helpingPlayers.add(PlayerManager.sharedManager().getPlayerById(3));
                 choice = new Choice(PlayerManager.sharedManager().getPlayerById(3), k == 74);
             }
             
@@ -148,7 +167,10 @@ public class GameStateGame extends GameState{
             }
             else
             {
-                choiceManager.compareChoices();
+                ArrayList<Player> playersWhoJustDied = choiceManager.compareChoices();
+                
+                //playersWhoJustDied
+                //helpingPlayers
                 nextState();
             }
         }

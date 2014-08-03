@@ -58,6 +58,10 @@ public class Player
         return (playerID == 2);
     }
     
+    public int getHP()
+    {
+        return health;
+    }
     public void loseHP(int HP)
     {
         this.health -= HP;

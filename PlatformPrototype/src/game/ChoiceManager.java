@@ -74,21 +74,26 @@ public class ChoiceManager
         compareChoices();
     }
    
-    public void compareChoices()
+    public ArrayList<Player> compareChoices()
     {
         System.out.println("========================");
         //PlayerManager.sharedManager().debug();
         //Endangered damage damage
+        
+        ArrayList<Player> playersWhoJustDied = new ArrayList<Player>();
         if (nonGhostHelpers() == 0 && scene != 1)
         {
             endangeredPlayer.kill();
+            playersWhoJustDied.add(endangeredPlayer);
         }
         else if (nonGhostHelpers() == 1)
         {
+            if (endangeredPlayer.getHP() <= 2) playersWhoJustDied.add(endangeredPlayer);
             endangeredPlayer.loseHP(2);
         }
         else if (nonGhostHelpers() == 2)
         {
+            if (endangeredPlayer.getHP() <= 1) playersWhoJustDied.add(endangeredPlayer);
             endangeredPlayer.loseHP(1);
         }
         
@@ -121,20 +126,25 @@ public class ChoiceManager
                 if (badLuckBrian != null)
                 {
                     badLuckBrian.kill();
+                    playersWhoJustDied.add(badLuckBrian);
                 }
             }
             else
             {
-                PlayerManager.sharedManager().getPlayerById(hurtByGhostID).loseHP(1);               
+                PlayerManager.sharedManager().getPlayerById(hurtByGhostID).loseHP(1);
+                if (PlayerManager.sharedManager().getPlayerById(hurtByGhostID).getHP() <= 1) playersWhoJustDied.add(PlayerManager.sharedManager().getPlayerById(hurtByGhostID));
             }
         }
         
         //Helpers damage
         for (Player p : nonGhostHelpersArray())
         {
+            if (p.getHP() <= 1) playersWhoJustDied.add(p);
             p.loseHP(1);
         }
         PlayerManager.sharedManager().debug();
+        
+        return playersWhoJustDied;
     }
     
     private Player getFirstPlayerWhoChoseYes()

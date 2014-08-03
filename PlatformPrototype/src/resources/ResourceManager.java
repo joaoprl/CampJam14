@@ -50,6 +50,11 @@ public class ResourceManager {
         loadSprite("Sheets\\scenes\\Scene4_1.png", 1600,600,"scene4_1");
         loadSprite("Sheets\\scenes\\Scene5_1.png", 1600,600,"scene5_1");
         
+        loadSprite("assets\\A_3.png", 400, 600, "A_3");
+        loadSprite("assets\\B_4.png", 400, 600, "B_4");
+        loadSprite("assets\\C_2.png", 400, 600, "C_2");
+        loadSprite("assets\\D_1.png", 400, 600, "D_1");
+        
         
         loadSprite("assets\\ok.png", 60, 60, "ok");
         
