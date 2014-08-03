@@ -36,7 +36,7 @@ public class Interlude {
 			int time) {
 		try {
                     //TODO: FIX FONT PATH
-			font = Font.createFont(Font.TRUETYPE_FONT, new File("assets\\LHANDW.TTF"));
+			font = Font.createFont(Font.TRUETYPE_FONT, new File("assets\\eurosti.ttf"));
 			font = font.deriveFont(25f);
 		} catch (NullPointerException | FontFormatException | IOException e) {
 			System.out.println(e.getMessage());
