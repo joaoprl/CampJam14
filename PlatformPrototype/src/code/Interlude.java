@@ -2,6 +2,8 @@ package code;
 
 import states.GameStateManager;
 
+import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics2D;
@@ -18,14 +20,15 @@ public class Interlude {
 
 	Font font;
 	Sprite overlay;
-	float overlayOpacity, overlayOpacityGlobal;
+	float stringOpacity;
+	Boolean fadeOut;
+	int stringCounter;
 
 	String[] strings;
 	Point position;
 	long fadeTime;
 	long totalTime, waited;
-	int nextState;
-	int stringCounter;
+	int nextState;		
 
 	public Interlude(String[] strings, Point position, float fadeTime,
 			int time, int nextState) {
@@ -36,17 +39,16 @@ public class Interlude {
 			System.out.println(e.getMessage());
 		}
 		overlay = ResourceManager.getInstance().getSprite("overlay");
-		overlayOpacity = 0;
-		overlayOpacityGlobal = 1;
-
+		stringOpacity = 0;
+		this.stringCounter = 0;
+		fadeOut = false;
+		
 		this.strings = strings;
-
 		this.position = position;
 		this.fadeTime = (long) fadeTime * 1000;
 		this.totalTime = time * 1000;
 		this.waited = 0l;
 		this.nextState = nextState;
-		this.stringCounter = 0;
 	}
 
 	public void update(long wait) {
@@ -55,22 +57,20 @@ public class Interlude {
 		if (waited >= fadeTime * (stringCounter + 1))
 			stringCounter++;
 
-		if ((float) waited < ((float) (((float) fadeTime) * (float) (stringCounter + 1)))&& stringCounter < strings.length) {
-			overlayOpacity = ((float) waited - (float) fadeTime	* (stringCounter)) / ((float) fadeTime);
+		if ((float) waited < ((float) (((float) fadeTime) * (float) (stringCounter + 1))) && stringCounter < strings.length) {
+			stringOpacity = ((float) waited - (float) fadeTime	* (stringCounter)) / ((float) fadeTime);
 		}
 
 		if (waited > totalTime - fadeTime) {
-			overlayOpacityGlobal = ((float) (totalTime - waited)) / (float) fadeTime;
+			fadeOut = true;
+			stringOpacity = ((float) (totalTime - waited)) / (float) fadeTime;
 		}
 
-		if (overlayOpacity < 0)
-			overlayOpacity = 0f;
-		if (overlayOpacity > 1)
-			overlayOpacity = 1f;
-		if (overlayOpacityGlobal < 0)
-			overlayOpacityGlobal = 0f;
-		if (overlayOpacityGlobal > 1)
-			overlayOpacityGlobal = 1f;
+		if (stringOpacity < 0)
+			stringOpacity = 0f;
+		if (stringOpacity > 1)
+			stringOpacity = 1f;
+		
 		// if(waited >= totalTime) this.end();
 	}
 
@@ -78,17 +78,17 @@ public class Interlude {
 		if (g.getFont() != this.font)
 			g.setFont(font);
 
-		int y = 0, lastStringHeight = 0, lastPosition = 0;
+		int y = 0;
 
 		for (int i = 0; i < strings.length && i <= stringCounter; i++) {
+			if(stringCounter == i || fadeOut) g.setComposite(AlphaComposite.SrcOver.derive(stringOpacity));
+			
 			g.drawString(strings[i], position.x, position.y + y);
-			lastPosition = position.y + y;
-			y += lastStringHeight = (int) font.getStringBounds(strings[i], new FontRenderContext(new AffineTransform(), false, false)).getHeight();
-
+			
+			g.setComposite(AlphaComposite.SrcOver.derive(1f));
+			
+			y += (int) font.getStringBounds(strings[i], new FontRenderContext(new AffineTransform(), false, false)).getHeight();
 		}
-		overlay.draw(g, position.x, lastPosition - (int) (1.3 * lastStringHeight / 2), 1f, ((float) lastStringHeight) / 768f, 1f - overlayOpacity);
-
-		overlay.draw(g, 0, 0, 1 - overlayOpacityGlobal);
 	}
 
 	private void end() {
