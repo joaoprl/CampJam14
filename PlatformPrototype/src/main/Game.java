@@ -1,5 +1,6 @@
 package main;
 
+import code.Resources;
 import javax.swing.JFrame;
 import resources.ResourceManager;
 import states.GameStateManager;
@@ -15,6 +16,7 @@ public class Game {
     private ResourceManager rm;
     
     public static void main(String args[]){
+        Resources.setStandardMap("pt_br");
         new Game();
     }
     
