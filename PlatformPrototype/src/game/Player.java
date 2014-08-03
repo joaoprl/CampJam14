@@ -72,4 +72,10 @@ public class Player
         this.isDead = true;
         this.health = 0;
     }
+    
+    public void debug()
+    {
+        System.out.println("Player " + getShowableID() + " (" + getName() + ")");
+        System.out.println(health + "HP, isDead = " + isDead);
+    }
 }

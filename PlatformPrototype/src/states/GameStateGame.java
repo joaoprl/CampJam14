@@ -104,8 +104,10 @@ public class GameStateGame extends GameState{
     @Override
     public void keyPressed(int k) {
         // Se jogo esta em cena e tempo de animacao jah acabou (tempo de decisao dos jogadores)
+        //System.out.println(k);
         if(inScene && gameScene.isOver())
         {
+            //System.out.println("oooi");
             Choice choice = null;
             if(k == 65 || k == 83)
             {
@@ -126,7 +128,7 @@ public class GameStateGame extends GameState{
             
             choiceManager.addChoice(choice);
             
-            if (choiceManager.choiceCount() < PlayerManager.sharedManager().alivePlayers())
+            if (choiceManager.choiceCount() < PlayerManager.sharedManager().alivePlayers()-1)
             {
                 //falta decisao
             }

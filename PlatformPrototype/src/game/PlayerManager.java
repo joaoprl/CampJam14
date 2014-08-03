@@ -53,4 +53,12 @@ public class PlayerManager
     {
         return players.get(playerID).isDead() ? null : players.get(playerID);
     }
+    
+    public void debug()
+    {
+        for (Player player : players)
+        {
+            player.debug();
+        }
+    }
 }

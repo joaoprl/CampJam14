@@ -15,7 +15,7 @@ import game.PlayerManager;
  */
 public class ChoiceManager
 {
-    private Choice choices[];
+    private ArrayList<Choice> choices;
     private int scene;
     private Player endangeredPlayer;
     
@@ -26,7 +26,7 @@ public class ChoiceManager
     
     public void setScene(int scene)
     {
-        choices = new Choice[PlayerManager.sharedManager().alivePlayers()];
+        choices = new ArrayList<Choice>();
         this.scene = scene;
         int endangeredPlayerID = -1;
         switch (scene)
@@ -52,6 +52,7 @@ public class ChoiceManager
     
     public void addChoice(Choice choice)
     {
+        if (choice == null || choice.getPlayer() == null) return;
         if (choice.getPlayer() != endangeredPlayer)
         {
             for (Choice c : choices)
@@ -62,7 +63,7 @@ public class ChoiceManager
                     return;
                 }
             }
-            choices[choices.length] = choice;
+            choices.add(choice);
             System.out.println("Player " + choice.getPlayer().getShowableID() + " chose " + choice.getChoice());
         }
 
@@ -75,6 +76,8 @@ public class ChoiceManager
    
     public void compareChoices()
     {
+        System.out.println("aeaeaeaeae");
+        PlayerManager.sharedManager().debug();
         //Endangered damage damage
         if (nonGhostHelpers() == 0)
         {
@@ -134,7 +137,8 @@ public class ChoiceManager
             {
                 p.loseHP(1);
             }
-        }        
+        }
+        PlayerManager.sharedManager().debug();
     }
     
     private Player getFirstPlayerWhoChoseYes()
@@ -189,6 +193,6 @@ public class ChoiceManager
     
     public int choiceCount()
     {
-        return choices.length;
+        return choices.size();
     }
 }
