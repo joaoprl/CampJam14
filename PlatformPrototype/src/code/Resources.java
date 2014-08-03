@@ -16,12 +16,12 @@ import java.util.Map;
 public class Resources
 {
     private static Resources resources;
-    private static Map<String, Map> maps;
+    private static Map<String, Map<String, Object>> maps;
     private static Map<String, Object> standardMap;
     
     private Resources()
     {
-       maps = new HashMap<String, Map>();
+       maps = new HashMap<String, Map<String, Object>>();
        Map<String, Object> constants = new HashMap<String, Object>();
        constants.put("player1Name", "Alegria");
        constants.put("player1Health", 6);
