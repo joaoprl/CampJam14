@@ -62,6 +62,7 @@ public class GameStateGame extends GameState{
         // First state: prologue!
         inputEnable = false;
         currentState = STATE_PROLOGUE;
+        //currentState = STATE_SCENE1;
         gameScene = new Scene(sceneAnimations(currentState));
         inScene = true;
     }
@@ -105,7 +106,7 @@ public class GameStateGame extends GameState{
         // Se jogo esta em cena e tempo de animacao jah acabou (tempo de decisao dos jogadores)
         if(inScene && gameScene.isOver())
         {
-            Choice choice;
+            Choice choice = null;
             if(k == 65 || k == 83)
             {
                 choice = new Choice(PlayerManager.sharedManager().getPlayerById(0), k == 65);
@@ -122,6 +123,8 @@ public class GameStateGame extends GameState{
             {
                 choice = new Choice(PlayerManager.sharedManager().getPlayerById(3), k == 74);
             }
+            
+            choiceManager.addChoice(choice);
             
             if (choiceManager.choiceCount() < PlayerManager.sharedManager().alivePlayers())
             {

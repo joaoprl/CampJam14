@@ -190,7 +190,5 @@ public class ChoiceManager
     public int choiceCount()
     {
         return choices.length;
-                
-                
     }
 }

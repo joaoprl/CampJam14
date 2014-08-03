@@ -3,25 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Peronio/CampJam14/CampJam14/PlatformPrototype/src/states/GameStateMenu.java</file>
-            <file>file:/C:/Users/Peronio/CampJam14/CampJam14/PlatformPrototype/src/code/Interlude.java</file>
-            <file>file:/C:/Users/Peronio/CampJam14/CampJam14/PlatformPrototype/src/code/Animation.java</file>
-            <file>file:/C:/Users/Peronio/CampJam14/CampJam14/PlatformPrototype/src/main/Panel.java</file>
-            <file>file:/C:/Users/Peronio/CampJam14/CampJam14/PlatformPrototype/src/resources/ResourceManager.java</file>
-            <file>file:/C:/Users/Peronio/CampJam14/CampJam14/PlatformPrototype/src/states/GameStateManager.java</file>
-            <file>file:/C:/Users/Peronio/CampJam14/CampJam14/PlatformPrototype/src/code/Scene.java</file>
-            <file>file:/C:/Users/Peronio/CampJam14/CampJam14/PlatformPrototype/src/states/GameStateGame.java</file>
-            <file>file:/C:/Users/Peronio/CampJam14/CampJam14/PlatformPrototype/src/states/GameStatePrepare.java</file>
-=======
             <file>file:/C:/Users/Francesco/Documents/CampJam14/CampJam14/PlatformPrototype/src/states/GameStateGame.java</file>
             <file>file:/C:/Users/Francesco/Documents/CampJam14/CampJam14/PlatformPrototype/src/code/Resources.java</file>
-            <file>file:/C:/Users/Francesco/Documents/CampJam14/CampJam14/PlatformPrototype/src/main/Panel.java</file>
+            <file>file:/C:/Users/Francesco/Documents/CampJam14/CampJam14/PlatformPrototype/src/code/Scene.java</file>
             <file>file:/C:/Users/Francesco/Documents/CampJam14/CampJam14/PlatformPrototype/src/game/Choice.java</file>
             <file>file:/C:/Users/Francesco/Documents/CampJam14/CampJam14/PlatformPrototype/src/game/ChoiceManager.java</file>
             <file>file:/C:/Users/Francesco/Documents/CampJam14/CampJam14/PlatformPrototype/src/game/Player.java</file>
             <file>file:/C:/Users/Francesco/Documents/CampJam14/CampJam14/PlatformPrototype/src/game/PlayerManager.java</file>
->>>>>>> 61126e2cf363564feb7a28c760f26132929c804f
         </group>
     </open-files>
 </project-private>
