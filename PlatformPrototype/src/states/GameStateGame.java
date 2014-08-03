@@ -28,13 +28,9 @@ public class GameStateGame extends GameState{
     public static final int PLAYER_CHOICE_ABSTAIN        = 0;
     public static final int PLAYER_CHOICE_HELP           = 1;
     public static final int PLAYER_CHOICE_DONTHELP       = 2;
-<<<<<<< HEAD
     public static final int TIME_LIMIT                  = 10000;
     private int[] players_choices;
-=======
-    public static final int TIME_LIMIT                  = 10;
     private ChoiceManager choiceManager;
->>>>>>> 61126e2cf363564feb7a28c760f26132929c804f
     private boolean inputEnable;
     private long choiceTime;
     
