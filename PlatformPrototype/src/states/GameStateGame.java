@@ -26,7 +26,7 @@ public class GameStateGame extends GameState{
     public static final int PLAYER_CHOICE_ABSTAIN        = 0;
     public static final int PLAYER_CHOICE_HELP           = 1;
     public static final int PLAYER_CHOICE_DONTHELP       = 2;
-    public static final int TIME_LIMIT                  = 10;
+    public static final int TIME_LIMIT                  = 10000;
     private int[] players_choices;
     private boolean inputEnable;
     private long choiceTime;
@@ -180,24 +180,57 @@ public class GameStateGame extends GameState{
             	
             	newAnimation = new Animation[10];
             	
-            	for(int j = 1; j < 10; j++)
-        		{
-            		newAnimation[j - 1] = anime = new Animation(duration, resizeX, resizeY, "prologue0" + j);
-            		anime.addPointInTime("prologue0" + j, 0, point);
-        		}
+                anime = newAnimation[0] = new Animation(duration, resizeX, resizeY, "prologue01");
+                anime.addPointInTime("prologue01", 0, new Point(0, 170));
+                anime = newAnimation[1] = new Animation(duration, resizeX, resizeY, "prologue02");
+                anime.addPointInTime("prologue02", 0, new Point(0, 170));
+                anime = newAnimation[2] = new Animation(duration, resizeX, resizeY, "prologue03");
+                anime.addPointInTime("prologue03", 0, new Point(0, 170));
+                anime = newAnimation[3] = new Animation(duration, resizeX, resizeY, "prologue04");
+                anime.addPointInTime("prologue04", 0, new Point(0, 170));
+                
+            	for(int j = 5; j < 10; j++) {
+                    newAnimation[j - 1] = anime = new Animation(duration, resizeX, resizeY, "prologue0" + j);
+                    anime.addPointInTime("prologue0" + j, 0, point);
+                }
             	newAnimation[9] = anime = new Animation(duration, resizeX, resizeY, "prologue10");
-        		anime.addPointInTime("prologue10", 0, point);
+                anime.addPointInTime("prologue10", 0, point);
+                
+                anime = newAnimation[0];
+                anime.addPointInTime("prologue01", 2, new Point(0, 210));
+                anime = newAnimation[1];
+                anime.addPointInTime("prologue02", 2, new Point(0, 210));
+                anime = newAnimation[2];
+                anime.addPointInTime("prologue03", 2, new Point(0, 210));
+                anime = newAnimation[3];
+                anime.addPointInTime("prologue04", 2, new Point(0, 210));
         		
+                        
                 break;
             case STATE_SCENE1:
+                newAnimation = new Animation[1];
+                anime = newAnimation[0] = new Animation(10, resizeX, resizeY, "scene1_1");
+                anime.addPointInTime("scene1_1", 0, point);
                 break;
             case STATE_SCENE2:
+                newAnimation = new Animation[1];
+                anime = newAnimation[0] = new Animation(10, resizeX, resizeY, "scene2_1");
+                anime.addPointInTime("scene2_1", 0, point);
                 break;
             case STATE_SCENE3:
+                newAnimation = new Animation[1];
+                anime = newAnimation[0] = new Animation(10, resizeX, resizeY, "scene3_1");
+                anime.addPointInTime("scene3_1", 0, point);
                 break;
             case STATE_SCENE4:
+                newAnimation = new Animation[1];
+                anime = newAnimation[0] = new Animation(10, resizeX, resizeY, "scene4_1");
+                anime.addPointInTime("scene4_1", 0, point);
                 break;
             case STATE_SCENE5:
+                newAnimation = new Animation[1];
+                anime = newAnimation[0] = new Animation(10, resizeX, resizeY, "scene5_1");
+                anime.addPointInTime("scene5_1", 0, point);
                 break;
             case STATE_EPILOGUE:
                 break;

@@ -57,7 +57,7 @@ public class GameStatePrepare extends GameState{
         playerDOk = false;
         
         try {
-            font = Font.createFont(Font.TRUETYPE_FONT, new File("assets\\JingJing.ttf"));
+            font = Font.createFont(Font.TRUETYPE_FONT, new File("assets\\LHANDW.ttf"));
             font = font.deriveFont(50f);
         } catch (NullPointerException | FontFormatException | IOException e) {
             System.out.println(e.getMessage());

@@ -44,6 +44,13 @@ public class ResourceManager {
         loadSprite("assets\\personagemC.png", 300, 700, "personagemCThumbnail");
         loadSprite("assets\\personagemD.png", 300, 700, "personagemDThumbnail");
 
+        loadSprite("assets\\scenes\\Scene1_1.png", 1600,600,"scene1_1");
+        loadSprite("assets\\scenes\\Scene2_1.png", 1600,600,"scene2_1");
+        loadSprite("assets\\scenes\\Scene3_1.png", 1600,600,"scene3_1");
+        loadSprite("assets\\scenes\\Scene4_1.png", 1600,600,"scene4_1");
+        loadSprite("assets\\scenes\\Scene5_1.png", 1600,600,"scene5_1");
+        
+        
         loadSprite("assets\\ok.png", 60, 60, "ok");
         
 //        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\personagemA.png", 300, 700, "personagemAThumbnail");
