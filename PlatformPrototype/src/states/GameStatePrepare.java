@@ -36,6 +36,8 @@ public class GameStatePrepare extends GameState{
     
     Font font;
     
+    
+    
     @Override
     public void init() {
         rm = ResourceManager.getInstance();
@@ -72,7 +74,7 @@ public class GameStatePrepare extends GameState{
 
     @Override
     public void draw(Graphics2D g) {
-        //g.setColor(Color.WHITE);
+        g.setColor(Color.BLACK);
         thumbnailA.draw(g, 0, 0, rszx, rszy);
         thumbnailB.draw(g, Panel.WIDTH/4, 0, rszx, rszy);
         thumbnailC.draw(g, Panel.WIDTH/2, 0, rszx, rszy);
