@@ -3,8 +3,10 @@ package states;
 import code.Animation;
 import code.Interlude;
 import code.Scene;
+
 import java.applet.AudioClip;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 
 /*
@@ -168,8 +170,24 @@ public class GameStateGame extends GameState{
     
     private Animation[] sceneAnimations(int i){
         Animation[] newAnimation = null;
+        Animation anime;
+        
+        Point point = new Point(0,192);
+    	float resizeX = 1024f/1600f, resizeY = 1024f/1600f;
+    	long duration = 2l;
         switch(i){
-            case STATE_PROLOGUE:
+            case STATE_PROLOGUE:          	
+            	
+            	newAnimation = new Animation[10];
+            	
+            	for(int j = 1; j < 10; j++)
+        		{
+            		newAnimation[j - 1] = anime = new Animation(duration, resizeX, resizeY, "prologue0" + j);
+            		anime.addPointInTime("prologue0" + j, 0, point);
+        		}
+            	newAnimation[9] = anime = new Animation(duration, resizeX, resizeY, "prologue10");
+        		anime.addPointInTime("prologue10", 0, point);
+        		
                 break;
             case STATE_SCENE1:
                 break;
@@ -184,7 +202,6 @@ public class GameStateGame extends GameState{
             case STATE_EPILOGUE:
                 break;
             default:
-                //lel
                 break;
         }
         return newAnimation;

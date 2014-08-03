@@ -29,9 +29,9 @@ public class GameStateManager {
     private GameStateManager(){
         states = new ArrayList<GameState>();
 
-        states.add(new GameStateTest());
+        // states.add(new GameStateTest());
         states.add(new GameStateMenu());
-        states.add(new GameStatePrepare());
+        // states.add(new GameStatePrepare());
         states.add(new GameStateGame());
 
         states.add(new GameStateTest());      

@@ -2,8 +2,11 @@ package code;
 
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import resources.ResourceManager;
 import resources.Sprite;
 
@@ -21,11 +24,18 @@ public class Animation {
     long animationDuration;
     long currentTick;
     
+    float widthResize, heightResize;
+    
+    public Animation(long duration, float widthResize, float heightResize, String... ids){
+    	this(duration, ids);
+    	this.widthResize = widthResize;
+    	this.heightResize = heightResize;
+    }
     public Animation(long duration, String... ids){
         sprites = new HashMap<String, Sprite>();
         rm = ResourceManager.getInstance();
         
-        animationDuration = duration;
+        animationDuration = duration * 1000;
         currentTick = 0;
         
         // Initialize sprites
@@ -41,6 +51,9 @@ public class Animation {
         }
         
         spriteIds = ids;
+        
+        widthResize = 1f;
+        heightResize = 1f;
     }
     
     public void drawFrame(Graphics2D g){
@@ -50,7 +63,8 @@ public class Animation {
                 j -= 1;
             }
             if(spritesTimeline.get(s).size()-1 == j)
-                sprites.get(s).draw(g, spritesTimeline.get(s).get(j).point.x, spritesTimeline.get(s).get(j).point.y);
+                sprites.get(s).draw(g, spritesTimeline.get(s).get(j).point.x, spritesTimeline.get(s).get(j).point.y, 
+                		widthResize, heightResize);
             else{
                 long t = (spritesTimeline.get(s).get(j+1).time-spritesTimeline.get(s).get(j).time);
                 float dx = (spritesTimeline.get(s).get(j+1).point.x-spritesTimeline.get(s).get(j).point.x);
@@ -60,7 +74,8 @@ public class Animation {
                 float dt = currentTick - spritesTimeline.get(s).get(j).time;
                 sprites.get(s).draw(g, 
                                     spritesTimeline.get(s).get(j).point.x + (int)(vx*dt),
-                                    spritesTimeline.get(s).get(j).point.y + (int)(vy*dt));
+                                    spritesTimeline.get(s).get(j).point.y + (int)(vy*dt),
+                                    widthResize, heightResize);
             }
         }
     }
@@ -71,6 +86,7 @@ public class Animation {
     
     public void updateFrame(long delta){
         currentTick += delta;
+        
     }
     
     public boolean isOver(){
