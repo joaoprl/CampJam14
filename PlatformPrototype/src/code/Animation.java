@@ -70,11 +70,12 @@ public class Animation {
         spritesTimeline.get(id).add(new PointInTime(time, point));
     }
     
-    public boolean updateFrame(long delta){
+    public void updateFrame(long delta){
         currentTick += delta;
-        if(delta > animationDuration)
-            return true;
-        return false;
+    }
+    
+    public boolean isOver(){
+        return (currentTick > animationDuration);
     }
     
     private class PointInTime{
