@@ -21,8 +21,9 @@ public class GameStateManager {
     
     // Game stats ints
     private int currentState;
-    public static final int TEST = 0;
-    
+    public static final int GAMESTATE_MENU = 0;
+    public static final int GAMESTATE_PREPARE = 1;
+    public static final int GAMESTATE_GAME = 2;
     
     // Singleton Methods
     private GameStateManager(){
@@ -35,7 +36,7 @@ public class GameStateManager {
 
         states.add(new GameStateTest());      
         
-        setState(TEST);
+        setState(GAMESTATE_MENU);
     }
     
     public static GameStateManager getInstance(){

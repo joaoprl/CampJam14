@@ -28,6 +28,13 @@ public class ResourceManager {
         loadSprite("assets\\loadingTimeBar.png", 94, 8, "loading_time_bar");
         loadSprite("assets\\background_menu.png", 1600, 1200, "background_menu");
 
+        loadSprite("assets\\personagemA.png", 300, 700, "personagemAThumbnail");
+        loadSprite("assets\\personagemB.png", 300, 700, "personagemBThumbnail");
+        loadSprite("assets\\personagemC.png", 300, 700, "personagemCThumbnail");
+        loadSprite("assets\\personagemD.png", 300, 700, "personagemDThumbnail");
+        
+        loadSprite("assets\\ok.png", 60, 60, "ok");
+
         //loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\earthIsoTile.png", 32, 32, "tile_earth_default");
         //loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\backgroundTimeBar.png", 100, 10, "background_time_bar");
         //loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\loadingTimeBar.png", 94, 8, "loading_time_bar");

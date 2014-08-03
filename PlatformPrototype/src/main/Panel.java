@@ -62,7 +62,7 @@ public class Panel extends JPanel implements Runnable, KeyListener, MouseListene
         gsm = GameStateManager.getInstance();
 
         // Inititate gsm!
-        gsm.setState(1);
+        gsm.setState(GameStateManager.GAMESTATE_MENU);
 
         
     }

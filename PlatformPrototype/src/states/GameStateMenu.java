@@ -11,12 +11,12 @@ import resources.Sprite;
  */
 public class GameStateMenu extends GameState{
 
-    ResourceManager rm;
-    GameStateManager gsm;
+    private ResourceManager rm;
+    private GameStateManager gsm;
     
-    Sprite background;
-    float rszx;
-    float rszy;
+    private Sprite background;
+    private float rszx;
+    private float rszy;
     
     @Override
     public void init() {
@@ -41,9 +41,7 @@ public class GameStateMenu extends GameState{
 
     @Override
     public void keyPressed(int k) {
-        if(k == 65 || k == 83 || k == 68 || k == 70 || k == 71 || k == 72 || k == 74 || k == 75 || k == 76){
-            gsm.setState(2);
-        }
+        gsm.setState(GameStateManager.GAMESTATE_PREPARE);
     }
 
     @Override
