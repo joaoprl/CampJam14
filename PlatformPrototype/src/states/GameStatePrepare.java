@@ -57,7 +57,7 @@ public class GameStatePrepare extends GameState{
         playerDOk = false;
         
         try {
-            font = Font.createFont(Font.TRUETYPE_FONT, new File("assets\\LHANDW.ttf"));
+            font = Font.createFont(Font.TRUETYPE_FONT, new File("assets\\eurosti.ttf"));
             font = font.deriveFont(50f);
         } catch (NullPointerException | FontFormatException | IOException e) {
             System.out.println(e.getMessage());
@@ -72,6 +72,7 @@ public class GameStatePrepare extends GameState{
 
     @Override
     public void draw(Graphics2D g) {
+        //g.setColor(Color.WHITE);
         thumbnailA.draw(g, 0, 0, rszx, rszy);
         thumbnailB.draw(g, Panel.WIDTH/4, 0, rszx, rszy);
         thumbnailC.draw(g, Panel.WIDTH/2, 0, rszx, rszy);
@@ -79,18 +80,18 @@ public class GameStatePrepare extends GameState{
         
         
         g.setFont(font);
-        g.setColor(Color.BLACK);
+        //g.setColor(Color.BLACK);
         g.drawString("A | S", Panel.WIDTH/14, 4*Panel.HEIGHT/6);
         g.drawString("D | F", Panel.WIDTH/4 + Panel.WIDTH/14, 4*Panel.HEIGHT/6);
         g.drawString("G | H", Panel.WIDTH/2 + Panel.WIDTH/14, 4*Panel.HEIGHT/6);
         g.drawString("J | K", 3*Panel.WIDTH/4 + Panel.WIDTH/14, 4*Panel.HEIGHT/6);
-        g.setColor(Color.GREEN);
+        //g.setColor(Color.GREEN);
         g.drawString("HELP", Panel.WIDTH/2 - Panel.WIDTH/4, 7*Panel.HEIGHT/8);
-        g.setColor(Color.BLACK);
+        //g.setColor(Color.BLACK);
         g.drawString("|", Panel.WIDTH/2, 7*Panel.HEIGHT/8);
-        g.setColor(Color.RED);
+        //g.setColor(Color.RED);
         g.drawString("DON'T HELP", Panel.WIDTH/2 + Panel.WIDTH/12, 7*Panel.HEIGHT/8);
-        g.setColor(Color.WHITE);
+        //g.setColor(Color.BLACK);
         if(playerAOk)
             ok.draw(g, Panel.WIDTH/13, 5*Panel.HEIGHT/7);
         if(playerBOk)

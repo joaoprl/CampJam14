@@ -75,7 +75,7 @@ public class Sprite {
     	if((int)(SPRITE_WIDTH * widthResize) > 0 && (int)(SPRITE_HEIGHT * heightResize) > 0)
     	{
 		g2.setComposite(AlphaComposite.SrcOver.derive(opacity));
-    		g2.drawImage(this.spriteSheet, x, y, (int)(SPRITE_WIDTH * widthResize), (int)(SPRITE_HEIGHT * heightResize), null, null);
+    		g2.drawImage(this.spriteSheet, x, y, (int)(SPRITE_WIDTH * widthResize), (int)(SPRITE_HEIGHT * heightResize), Color.BLACK, null);
 	        if(isAnimate) Animate();
 		g2.setComposite(AlphaComposite.SrcOver.derive(1f));
     	}
