@@ -41,6 +41,8 @@ public class GameStateManager {
         
         setState(GAMESTATE_MENU);
         r = 0;
+        
+        Audio.loop("Audio\\Trilhas Finais\\Trilha Final 1 (4).wav", 0);
     }
     
     public static GameStateManager getInstance(){
@@ -51,6 +53,18 @@ public class GameStateManager {
     public void setState(int newState){
         currentState = newState;
         states.get(newState).init();
+        
+        if(newState == GAMESTATE_PREPARE)
+        {
+        	Audio.fadeout(0);
+//        	try {
+//        		Thread.sleep(2000l);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}        	
+        }
+        if(newState == GAMESTATE_GAME)
+        	Audio.loop("Audio\\Trilhas Finais\\Menu Inicial - Final.wav", 1);
     }
     
     public int getState(){

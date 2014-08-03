@@ -9,8 +9,11 @@ public class Audio {
 	// Add update in GameStateManager
 	
 	private static void runAudioClip(String file, int id, Boolean loop){
+		String path;
+		path = "C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\";
 		
-		AudioClip audioClip = new AudioClip(file, id, loop);
+		
+		AudioClip audioClip = new AudioClip(path + file, id, loop);
 		
 		audioList.add(audioClip);
 		

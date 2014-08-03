@@ -52,12 +52,13 @@ public class AudioClip implements Runnable{
 		if(fadeOut)
 		{
 			waited += wait;
-			if(waited > 1000)
+			if(waited > 100)
 			{
-				volume.shift(volume.getValue(), volume.getValue() - 5, 1000000);
+				if(volume.getValue() - 5 <= volume.getMinimum()) stop();
+				else volume.shift(volume.getValue(), volume.getValue() - 5, 1000000);
 				waited = 0;
 			}
-			if(volume.getValue() <= volume.getMinimum()) stop();
+			
 		}
 		
 	}

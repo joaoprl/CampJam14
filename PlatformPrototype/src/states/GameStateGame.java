@@ -1,6 +1,7 @@
 ﻿package states;
 
 import code.Animation;
+import code.Audio;
 import code.Interlude;
 import code.PlayerGui;
 import code.Scene;
@@ -9,12 +10,14 @@ import game.Choice;
 import game.ChoiceManager;
 import game.Player;
 import game.PlayerManager;
+
 import java.applet.AudioClip;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
+
 import main.Panel;
 
 /*
@@ -56,6 +59,9 @@ public class GameStateGame extends GameState{
 
     private AudioClip[] scenesClips;
     
+    Boolean audioFlag;
+    int oldState;
+    
     @Override
     public void init() {
         // Initialize players
@@ -73,10 +79,46 @@ public class GameStateGame extends GameState{
         
         timeBar = new TimeBar(new Point(Panel.WIDTH*4/5,Panel.HEIGHT*1/5), 10);
         pg = new PlayerGui();
+        audioFlag = false;
     }
 
     @Override
     public void update(long wait) {
+    	if(oldState != currentState) audioFlag = false;
+    	
+    	if(!inScene)
+		{
+			Audio.fadeout(2);
+			if(currentState == STATE_SCENE5) Audio.fadeout(1);
+		}
+    	
+    	if(currentState == STATE_SCENE1 && !audioFlag)
+    	{
+			Audio.loop("Audio\\Efeitos\\Fogo.wav", 2);
+			audioFlag = true;    		
+    	}
+    	else if(currentState == STATE_SCENE2 && !audioFlag)
+		{
+    		Audio.loop("Audio\\Efeitos\\Afogamento.wav", 2);
+    		audioFlag = true;		
+		}
+    	else if(currentState == STATE_SCENE3 && !audioFlag)
+		{
+    		Audio.loop("Audio\\Efeitos\\Quadro.wav", 2);
+    		audioFlag = true;		
+		}
+    	else if(currentState == STATE_SCENE4 && !audioFlag)
+		{
+    		Audio.loop("Audio\\Efeitos\\Enforcamento.wav", 2);
+    		audioFlag = true;		
+		}
+    	else if(currentState == STATE_SCENE5 && !audioFlag)
+		{
+    		Audio.loop("Audio\\Efeitos\\Fogo.wav", 2);
+    		audioFlag = true;		
+		}
+    	oldState = currentState;
+    	
         if(inScene){
             gameScene.update(wait);
             if(gameScene.isOver()){
@@ -226,18 +268,9 @@ public class GameStateGame extends GameState{
             // Interlude
             inScene = false;
 
-            String[] strs = new String[4];
-            strs[0] = "The survivors have escaped!";
-            strs[1] = "Perônio";
-            strs[2] = "muito";
-            strs[3] = "gay";
-            gameInterlude = new Interlude(strs, new Point(Panel.WIDTH / 10, (int)(Panel.HEIGHT * 0.4)), 3f, 15);
-
-            inputEnable = false;
             String[] strs = new String[1];
-            strs[0] = "hu3";
-            gameInterlude = new Interlude(strs, new Point(10,10), 2f, 5);
-
+            strs[0] = "The survivors have escaped!";
+            gameInterlude = new Interlude(strs, new Point(Panel.WIDTH / 10, (int)(Panel.HEIGHT * 0.4)), 3f, 15);
             
         } else if(!inScene){
             // Next state
