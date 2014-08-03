@@ -32,7 +32,7 @@ public class GameStateMenu extends GameState{
     @Override
     public void draw(Graphics2D g) {
         // Draw background
-        background.draw(g, 0, 0, 1, 1);
+        background.draw(g, 0, 0, (float)Panel.WIDTH/background.SPRITE_WIDTH, (float)Panel.HEIGHT/background.SPRITE_HEIGHT);
     }
 
     @Override

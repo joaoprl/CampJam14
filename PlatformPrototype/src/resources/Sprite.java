@@ -73,9 +73,9 @@ public class Sprite {
     public void draw(Graphics2D g2, int x, int y, float widthResize, float heightResize, float opacity){
     	if((int)(SPRITE_WIDTH * widthResize) > 0 && (int)(SPRITE_HEIGHT * heightResize) > 0)
     	{
-	        BufferedImage subimage = this.spriteSheet.getSubimage(currentFrame*SPRITE_WIDTH, 0, (int)(SPRITE_WIDTH * widthResize), (int)(SPRITE_HEIGHT * heightResize));        
+	        BufferedImage subimage = this.spriteSheet.getSubimage(currentFrame*SPRITE_WIDTH, 0, SPRITE_WIDTH, SPRITE_HEIGHT);        
 	        g2.drawImage(subimage, x, y, new Color(0f,0f,0f,opacity), null);
-	        
+	        g2.drawImage(subimage, x, y, (int)(SPRITE_WIDTH * widthResize), (int)(SPRITE_HEIGHT * heightResize), new Color(0f,0f,0f,opacity), null);
 	        if(isAnimate)   Animate();
     	}
     }
