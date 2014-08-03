@@ -25,7 +25,7 @@ public class ResourceManager {
         clips   = new HashMap<>();
         
         String path = null;
-        path = "C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\";
+        path = "";
         
         loadSprite(path + "assets\\backgroundTimeBar.png", 100, 10, "background_time_bar");
         loadSprite(path + "assets\\loadingTimeBar.png", 94, 8, "loading_time_bar");

@@ -82,4 +82,17 @@ public class Player
         System.out.println("Player " + getShowableID() + " (" + getName() + ")");
         System.out.println(health + "HP, isDead = " + isDead);
     }
+    
+    public String getPlayerLetter()
+    {
+        if (playerID == 0)
+            return "D";
+        if (playerID == 1)
+            return "C";
+        if (playerID == 2)
+            return "A";
+        if (playerID == 3)
+            return "B";
+        return "~peronio";
+    }
 }

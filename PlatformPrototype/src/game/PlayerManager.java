@@ -54,6 +54,19 @@ public class PlayerManager
         return playerArray;
     }
     
+    public ArrayList<Player> getDeadPlayers()
+    {
+        ArrayList<Player> playerArray = new ArrayList<Player>();
+        for (Player player : players)
+        {
+            if (player.isDead())
+            {
+                playerArray.add(player);
+            }
+        }
+        return playerArray;
+    }
+    
     public void addStandardPlayers()
     {
         for (int i = 0; i < 4; i++)

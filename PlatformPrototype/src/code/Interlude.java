@@ -35,7 +35,7 @@ public class Interlude {
 	public Interlude(String[] strings, Point position, float fadeTime, int time) {
 		try {
 			String path;
-			path = "C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\";
+			path = "";
 			font = Font.createFont(Font.TRUETYPE_FONT, new File(path + "assets\\eurosti.ttf"));
 			font = font.deriveFont(25f);
 		} catch (NullPointerException | FontFormatException | IOException e) {

@@ -1,4 +1,4 @@
-﻿package states;
+package states;
 
 import code.Animation;
 import code.Audio;
@@ -61,6 +61,8 @@ public class GameStateGame extends GameState{
     
     Boolean audioFlag;
     int oldState;
+    private ArrayList<Player> playersWhoJustDied;
+    private ArrayList<Player> helpingPlayers;
     
     @Override
     public void init() {
@@ -182,7 +184,7 @@ public class GameStateGame extends GameState{
         if(inScene && gameScene.isOver())
         {
             //System.out.println("oooi");
-            ArrayList<Player> helpingPlayers = new ArrayList<Player>();
+            helpingPlayers = new ArrayList<Player>();
             
             Choice choice = null;
             if(k == 65 || k == 83)
@@ -214,7 +216,7 @@ public class GameStateGame extends GameState{
             }
             else
             {
-                ArrayList<Player> playersWhoJustDied = choiceManager.compareChoices();
+                playersWhoJustDied = choiceManager.compareChoices();
                 
                 //playersWhoJustDied
                 //helpingPlayers
@@ -268,9 +270,113 @@ public class GameStateGame extends GameState{
             // Interlude
             inScene = false;
 
-            String[] strs = new String[1];
-            strs[0] = "The survivors have escaped!";
+            
+            String[] strs = new String[4];
+            for (int i = 0; i < 4; i++)
+            {
+                strs[i] = "";
+            }
+            
+            int helping = 0;
+            boolean ghost = false;
+            String helpers  = "";
+            for (Player player : helpingPlayers)
+            {
+                if (player.isGhost())
+                {
+                    ghost = true;
+                }
+                else
+                {
+                    helping ++;
+                }
+                helpers += player.getPlayerLetter() + ", ";
+            }
+            
+            String dead = "";
+            int deadCount = 0;
+            for (Player player : PlayerManager.sharedManager().getDeadPlayers())
+            {
+                dead += player.getPlayerLetter() + ", ";
+                deadCount++;
+            }
+            
+            if (currentState == STATE_SCENE1)
+            {
+                if (helping == 0)
+                {
+                    strs[0] = "A was severely burned in the fire.";
+                }
+                else
+                {
+                    strs[0] = helpers + ", and A were severely burned in the fire";
+                }
+                if (deadCount > 0)
+                {
+                    strs[1] = dead + "died.";
+                }
+                strs[3] = "After the fire the children escaped to the bedroom.";
+            }
+            else if (currentState == STATE_SCENE2)
+            {
+                if (helping == 0)
+                {
+                    strs[0] = "Without help, B drowned and sinked to the bottom.";
+                }
+                else
+                {
+                    strs[0] = helpers + "and B nearly drowned.";
+                }
+                if (deadCount > 0)
+                {
+                    strs[1] = dead + "died.";
+                }
+                strs[3] = "From the bedroom the children escaped to the library.";
+            }
+            else if (currentState == STATE_SCENE3)
+            {
+                if (helping == 0)
+                {
+                    strs[0] = "D was choked to death as no one tried helped.";
+                }
+                else
+                {
+                    strs[0] = helpers + "and D barely escaped being choked to death.";
+                }
+                if (deadCount > 0)
+                {
+                    strs[1] = dead + "died.";
+                }
+                strs[3] = "From the bedroom the children escaped to the library.";
+            }
+            else if (currentState == STATE_SCENE4)
+            {
+                
+            }
+            else if (currentState == STATE_SCENE5)
+            {
+                
+            }
+            
+            if (helping > 0) 
+            {
+                
+            }
+            
+
+            
+            //String[] strs = new String[4];
+            /*strs[0] = "The survivors have escaped!";
+            strs[1] = "Perônio";
+            strs[2] = "muito";
+            strs[3] = "gay";*/
             gameInterlude = new Interlude(strs, new Point(Panel.WIDTH / 10, (int)(Panel.HEIGHT * 0.4)), 3f, 15);
+
+                
+            inputEnable = false;
+            /*String[] strs = new String[1];
+            strs[0] = "hu3";
+            gameInterlude = new Interlude(strs, new Point(10,10), 2f, 5);*/
             
         } else if(!inScene){
             // Next state
@@ -349,7 +455,9 @@ public class GameStateGame extends GameState{
                 anime.addPointInTime("scene5_1", 0, point);
                 break;
             case STATE_EPILOGUE:
-            	
+            	newAnimation = new Animation[1];
+                anime = newAnimation[0] = new Animation(3, resizeX, resizeY, "epilogue");
+                anime.addPointInTime("epliogue", 0, point);
                 break;
             default:
                 break;
