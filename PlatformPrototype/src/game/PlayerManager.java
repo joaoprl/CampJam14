@@ -40,4 +40,17 @@ public class PlayerManager
     {
         return players.toArray();
     }
+    
+    public void addStandardPlayers()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            players.add(new Player(i));
+        }
+    }
+    
+    public Player getPlayerById(int playerID)
+    {
+        return players.get(playerID).isDead() ? null : players.get(playerID);
+    }
 }

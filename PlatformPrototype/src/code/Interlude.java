@@ -33,6 +33,7 @@ public class Interlude {
 	public Interlude(String[] strings, Point position, float fadeTime,
 			int time, int nextState) {
 		try {
+                    //TODO: FIX FONT PATH
 			font = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\LHANDW.TTF"));
 			font = font.deriveFont(25f);
 		} catch (NullPointerException | FontFormatException | IOException e) {

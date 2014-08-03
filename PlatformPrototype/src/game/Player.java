@@ -23,9 +23,10 @@ public class Player
     public Player(int playerID)
     {
         this.playerID = playerID;
- 
-        this.name = Resources.getStringForKey("player" + playerID + "Name");
-        this.health = Resources.getIntForKey("player" + playerID + "Health");
+    
+        this.name = Resources.getStringForKey("player" + getShowableID() + "Name", "constants");
+        this.health = Resources.getIntForKey("player" + getShowableID() + "Health", "constants");
+        this.isDead = false;
 
     }
     
@@ -52,4 +53,23 @@ public class Player
         return name;
     }
     
+    public boolean isGhost()
+    {
+        return (playerID == 2);
+    }
+    
+    public void loseHP(int HP)
+    {
+        this.health -= HP;
+        if (health <= 0)
+        {
+            this.isDead = true;
+        }
+    }
+    
+    public void kill()
+    {
+        this.isDead = true;
+        this.health = 0;
+    }
 }
