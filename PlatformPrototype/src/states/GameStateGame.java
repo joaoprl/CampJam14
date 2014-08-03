@@ -87,6 +87,7 @@ public class GameStateGame extends GameState{
                         choiceTime = TIME_LIMIT;
                     } else {
                         choiceTime -= wait;
+                        System.out.println(choiceTime);
                         timeBar.update(wait);
                         if(choiceTime < 0)
                         {
@@ -99,7 +100,11 @@ public class GameStateGame extends GameState{
                 }
 
             }
-        } else {        	
+        } else {
+            if (gameInterlude == null)
+            {
+                System.out.println(currentState);
+            }
             gameInterlude.update(wait);
             if(gameInterlude.isOver()){
                 nextState();
@@ -205,6 +210,7 @@ public class GameStateGame extends GameState{
         if(inScene && currentState == STATE_PROLOGUE){
             // Scene 1
             inScene = true;
+            inputEnable = false;
             currentState = STATE_SCENE1;
             choiceManager = new ChoiceManager(1);
             gameScene = new Scene(sceneAnimations(currentState));
@@ -212,23 +218,32 @@ public class GameStateGame extends GameState{
         } else if(inScene && currentState == STATE_SCENE5){
             // Epilogue
             inScene = true;
+            inputEnable = false;
             currentState = STATE_EPILOGUE;
             gameScene = new Scene(sceneAnimations(currentState));
             return;
         } else if(inScene){
             // Interlude
             inScene = false;
+
             String[] strs = new String[4];
             strs[0] = "The survivors have escaped!";
             strs[1] = "Perônio";
             strs[2] = "muito";
             strs[3] = "gay";
             gameInterlude = new Interlude(strs, new Point(Panel.WIDTH / 10, (int)(Panel.HEIGHT * 0.4)), 3f, 15);
+
+            inputEnable = false;
+            String[] strs = new String[1];
+            strs[0] = "hu3";
+            gameInterlude = new Interlude(strs, new Point(10,10), 2f, 5);
+
             
         } else if(!inScene){
             // Next state
             currentState++;
             inScene = true;
+            inputEnable = false;
             choiceManager = new ChoiceManager(currentState);
             timeBar = new TimeBar(new Point(Panel.WIDTH*4/5,Panel.HEIGHT*1/5), 10);
             gameScene = new Scene(sceneAnimations(currentState));
