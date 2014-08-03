@@ -3,7 +3,10 @@ package states;
 import code.Animation;
 import code.Interlude;
 import code.Scene;
-
+import game.Choice;
+import game.ChoiceManager;
+import game.Player;
+import game.PlayerManager;
 import java.applet.AudioClip;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -20,14 +23,13 @@ public class GameStateGame extends GameState{
     public static final int PLAYER_STATUS_MIDLYINJURE    = 2;
     public static final int PLAYER_STATUS_HEAVYINJURE    = 3;
     public static final int PLAYER_STATUS_DEAD           = 4;
-    private int[] players_health;
     
     // Player choices
     public static final int PLAYER_CHOICE_ABSTAIN        = 0;
     public static final int PLAYER_CHOICE_HELP           = 1;
     public static final int PLAYER_CHOICE_DONTHELP       = 2;
     public static final int TIME_LIMIT                  = 10;
-    private int[] players_choices;
+    private ChoiceManager choiceManager;
     private boolean inputEnable;
     private long choiceTime;
     
@@ -48,17 +50,10 @@ public class GameStateGame extends GameState{
     
     @Override
     public void init() {
-        // Initialize player health
-        players_health = new int[4];
-        for(int i: players_health){
-            i =  PLAYER_STATUS_NOINJURE;
-        }
-        
-        // Initialize player choices
-        players_choices = new int[4];
-        for(int i: players_choices){
-            i = PLAYER_CHOICE_ABSTAIN;
-        }
+        // Initialize players
+        PlayerManager.sharedManager().addStandardPlayers();
+        choiceManager = new ChoiceManager(1);
+        //TODO:change scenes!!!
         
         // Load musics!
         // lel
@@ -83,10 +78,9 @@ public class GameStateGame extends GameState{
                     } else {
                         choiceTime -= wait;
                         // Update Timebar
-                        if(choiceTime < 0){
-                            for(int i: players_choices){
-                                i = i == PLAYER_CHOICE_ABSTAIN ? PLAYER_CHOICE_DONTHELP : i;
-                            }
+                        if(choiceTime < 0)
+                        {
+                            choiceManager.timeIsUp();
                             nextState();
                         }
                     }
@@ -108,12 +102,35 @@ public class GameStateGame extends GameState{
     @Override
     public void keyPressed(int k) {
         // Se jogo esta em cena e tempo de animacao jah acabou (tempo de decisao dos jogadores)
-        if(inScene && gameScene.isOver()){
-            // Implementa decisoes
-            // if (falta algum jogador tomar decisao){
-            //} else {
-            //  nextState();
-            //}
+        if(inScene && gameScene.isOver())
+        {
+            Choice choice;
+            if(k == 65 || k == 83)
+            {
+                choice = new Choice(PlayerManager.sharedManager().getPlayerById(0), k == 65);
+            }
+            if(k == 68 || k == 70)
+            {
+                choice = new Choice(PlayerManager.sharedManager().getPlayerById(1), k == 68);
+            }
+            if(k == 71 || k == 72)
+            {
+                choice = new Choice(PlayerManager.sharedManager().getPlayerById(2), k == 71);
+            }
+            if(k == 74 || k == 75)
+            {
+                choice = new Choice(PlayerManager.sharedManager().getPlayerById(3), k == 74);
+            }
+            
+            if (choiceManager.choiceCount() < PlayerManager.sharedManager().alivePlayers())
+            {
+                //falta decisao
+            }
+            else
+            {
+                choiceManager.compareChoices();
+                nextState();
+            }
         }
     }
 
