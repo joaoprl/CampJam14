@@ -4,6 +4,7 @@ package resources;
  *
  * @author Peronio
  */
+ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -65,7 +66,7 @@ public class Sprite {
         this.draw(g2, x, y, 1f, 1f);
     }
     public void draw(Graphics2D g2, int x, int y, float widthResize, float heightResize){
-    	g2.drawImage(spriteSheet, x, y, (int)(SPRITE_WIDTH * widthResize), (int)(SPRITE_HEIGHT * heightResize), null);
+    	this.draw(g2, x, y, widthResize, heightResize, 1f);
     }
     public void draw(Graphics2D g2, int x, int y, float opacity){
         this.draw(g2, x, y, 1f, 1f, opacity);
@@ -73,12 +74,13 @@ public class Sprite {
     public void draw(Graphics2D g2, int x, int y, float widthResize, float heightResize, float opacity){
     	if((int)(SPRITE_WIDTH * widthResize) > 0 && (int)(SPRITE_HEIGHT * heightResize) > 0)
     	{
-	        BufferedImage subimage = this.spriteSheet.getSubimage(currentFrame*SPRITE_WIDTH, 0, SPRITE_WIDTH, SPRITE_HEIGHT);        
-	        g2.drawImage(subimage, x, y, new Color(0f,0f,0f,opacity), null);
-	        g2.drawImage(subimage, x, y, (int)(SPRITE_WIDTH * widthResize), (int)(SPRITE_HEIGHT * heightResize), new Color(0f,0f,0f,opacity), null);
-	        if(isAnimate)   Animate();
+		g2.setComposite(AlphaComposite.SrcOver.derive(opacity));
+    		g2.drawImage(this.spriteSheet, x, y, (int)(SPRITE_WIDTH * widthResize), (int)(SPRITE_HEIGHT * heightResize), null, null);
+	        if(isAnimate) Animate();
+		g2.setComposite(AlphaComposite.SrcOver.derive(1f));
     	}
     }
+    
     
     public void stopAnimation(){
         if(isAnimate)   isAnimate = false;

@@ -16,7 +16,7 @@ public class Game {
     private ResourceManager rm;
     
     public static void main(String args[]){
-        Resources.setStandardMap("pt_br");
+	    Resources.setStandardMap("pt_br");
         new Game();
     }
     
