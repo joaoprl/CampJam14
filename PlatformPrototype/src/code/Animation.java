@@ -49,7 +49,6 @@ public class Animation {
             while(spritesTimeline.get(s).get(j).time > currentTick) {
                 j-=1;
             }
-            System.out.println(j);
             if(spritesTimeline.get(s).size()-1 == j)
                 sprites.get(s).draw(g, spritesTimeline.get(s).get(j).point.x, spritesTimeline.get(s).get(j).point.y);
             else{

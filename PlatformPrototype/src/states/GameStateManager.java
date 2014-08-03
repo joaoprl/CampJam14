@@ -23,11 +23,16 @@ public class GameStateManager {
     private int currentState;
     public static final int TEST = 0;
     
+    
     // Singleton Methods
     private GameStateManager(){
         states = new ArrayList<GameState>();
         
         states.add(new GameStateTest());
+        states.add(new GameStateMenu());
+        states.add(new GameStatePrepare());
+        states.add(new GameStateGame());
+        
     }
     
     public static GameStateManager getInstance(){
