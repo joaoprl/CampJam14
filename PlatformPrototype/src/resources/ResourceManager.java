@@ -23,15 +23,15 @@ public class ResourceManager {
         sprites = new HashMap<>();
         clips   = new HashMap<>();
         
-        loadSprite("assets\\earthIsoTile.png", 32, 32, "tile_earth_default");
-        loadSprite("assets\\backgroundTimeBar.png", 100, 10, "background_time_bar");
-        loadSprite("assets\\loadingTimeBar.png", 94, 8, "loading_time_bar");
-        loadSprite("assets\\background_menu.png", 1600, 1200, "background_menu");
+//        loadSprite("assets\\earthIsoTile.png", 32, 32, "tile_earth_default");
+//        loadSprite("assets\\backgroundTimeBar.png", 100, 10, "background_time_bar");
+//        loadSprite("assets\\loadingTimeBar.png", 94, 8, "loading_time_bar");
+//        loadSprite("assets\\background_menu.png", 1600, 1200, "background_menu");
 
-        //loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\earthIsoTile.png", 32, 32, "tile_earth_default");
-        //loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\backgroundTimeBar.png", 100, 10, "background_time_bar");
-        //loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\loadingTimeBar.png", 94, 8, "loading_time_bar");
-        //loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\Overlay.png", 1024, 768, "overlay");
+        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\earthIsoTile.png", 32, 32, "tile_earth_default");
+        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\backgroundTimeBar.png", 100, 10, "background_time_bar");
+        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\loadingTimeBar.png", 94, 8, "loading_time_bar");
+        loadSprite("C:\\Users\\João\\workspace\\CampJam14\\PlatformPrototype\\assets\\background_menu.png", 1600, 1200, "background_menu");
 
     }
     
